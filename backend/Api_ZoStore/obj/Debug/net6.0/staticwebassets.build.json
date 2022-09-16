@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "SsdXVgTnVW84X+BHWny0HqxaU4bV7vPVi6PRcY4t7vw=",
+  "Source": "Api_ZoStore",
+  "BasePath": "_content/Api_ZoStore",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

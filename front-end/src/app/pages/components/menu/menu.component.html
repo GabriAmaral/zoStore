@@ -1,0 +1,19 @@
+<header class="page-header" [ngClass]="{'scroll-page-header': isScrollTop}">
+  <nav>
+      <div class="logo">
+          <img src="../../../assets/imgs/ZoStore_Png.png" alt="">
+      </div>
+
+      <div class="menu">
+          <ul>
+              <li><a [routerLink]="['/']" routerLinkActive="router-link-active">HOME</a></li>
+              <li><a href="#">PRODUTOS</a></li>
+              <li><a href="#">CONTATO</a></li>
+          </ul>
+      </div>
+
+      <div class="login">
+          <a [routerLink]="['/login']">LOGIN</a>
+      </div>
+  </nav>
+</header>

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class CadatroCliente {\n  constructor() {\n    this.access = 0;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
