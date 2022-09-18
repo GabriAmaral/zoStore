@@ -107,6 +107,9 @@ section.page {
                     width: 100%;
                     color: red;
                     margin-top: 1rem;
+                    max-height: 8rem;
+                    overflow: auto;
+                    overflow-x: hidden;
                 }
 
                 .inputs {

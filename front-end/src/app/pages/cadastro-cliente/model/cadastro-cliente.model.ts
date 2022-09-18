@@ -1,4 +1,4 @@
-export class CadatroCliente {
+export class Cliente {
     public id: number;
     public name: string;
     public password: string;

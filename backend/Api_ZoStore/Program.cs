@@ -19,6 +19,8 @@ builder.Services.AddDbContext<DataBaseContext>(x => x.UseMySql(
 ));
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
 //builder.Services.AddScoped<IVotosRepository, VotosRepository>();
 
 var app = builder.Build();

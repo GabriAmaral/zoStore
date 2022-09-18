@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { RouterModule } from '@angular/router';
 import { BaseApiService } from './core/baseApi/base-api.service';
+import { AuthService } from './core/authService/auth.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BaseApiService } from './core/baseApi/base-api.service';
   ],
   providers: [
     NativeService,
-    BaseApiService
+    BaseApiService,
+    AuthService
   ],
   bootstrap: [RootComponent]
 })

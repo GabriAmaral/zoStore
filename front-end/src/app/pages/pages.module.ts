@@ -8,6 +8,8 @@ import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.co
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProdutosComponent } from './produtos/produtos.component';
+import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component';
 
 @NgModule({
   imports: [
@@ -28,7 +30,9 @@ export class PagesModule { }
 var pagesComponentsDeclarations = [
   HomeComponent,
   LoginComponent,
-  CadastroClienteComponent
+  CadastroClienteComponent,
+  ProdutosComponent,
+  CadastroProdutoComponent
 ]
 
 var componentsDeclarations = [

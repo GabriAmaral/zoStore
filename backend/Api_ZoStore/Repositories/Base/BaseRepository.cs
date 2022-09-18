@@ -17,19 +17,10 @@ namespace Api_ZoStore.Repositories.Base
             return db.Set<T>();
         }
 
-        public bool Create(T entity)
+        public void Create(T entity)
         {
-            try
-            {
-                GetTable().Add(entity);
-                db.SaveChanges();
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            GetTable().Add(entity);
+            db.SaveChanges();
         }
 
         public T Get(TKey key)
@@ -51,6 +42,7 @@ namespace Api_ZoStore.Repositories.Base
                 var keyDelete = GetTable().Find(key);
                 GetTable().Remove(keyDelete);
                 db.SaveChanges();
+
                 return true;
             }
             catch

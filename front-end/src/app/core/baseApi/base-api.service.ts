@@ -16,17 +16,11 @@ export class BaseApiService {
     return Observable.create((observer: Observer) => {
       response.subscribe(
         (response) => {
-          if (response.errors && response.errors.length > 0)
-            observer.error(response.errors);
-          else {
-            observer.next(response.success);
-          }
+          observer.next(response);
           observer.complete();
         },
         (error) => {
-          observer.error([
-            { title: error.name, detail: this.genericError, error },
-          ]);
+          observer.next(error);
         }
       );
     });

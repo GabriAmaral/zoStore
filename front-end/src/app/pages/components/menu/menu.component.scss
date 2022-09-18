@@ -12,7 +12,7 @@
         }
     }
 
-    nav{
+    nav {
         height: 7rem;
         //background: white;
         display: flex;
@@ -40,19 +40,27 @@
                         font-style: normal;
                         color: #fff;
                         text-decoration: none;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
                     }
                 }
             }
         }
 
         .login{
-            a{
+            a {
                 padding: 2rem;
                 font-size: 1.3rem;
                 font-family: 'Roboto';
                 font-style: normal;
                 color: #fff;
                 text-decoration: none;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
         }

@@ -7,13 +7,14 @@
       <div class="menu">
           <ul>
               <li><a [routerLink]="['/']" routerLinkActive="router-link-active">HOME</a></li>
-              <li><a href="#">PRODUTOS</a></li>
+              <li><a [routerLink]="['/produtos']" routerLinkActive="router-link-active">PRODUTOS</a></li>
+              <li><a *ngIf="usuarioMenu?.access == 1" [routerLink]="['/cadastro-produto']" routerLinkActive="router-link-active">CADASTRAR PRODUTO</a></li>
               <li><a href="#">CONTATO</a></li>
           </ul>
       </div>
 
       <div class="login">
-          <a [routerLink]="['/login']">LOGIN</a>
+          <a (click)="navigateLogin()">{{ usuarioMenu?.name ? 'Bem vindo, ' + usuarioMenu?.name : 'LOGIN' }}</a>
       </div>
   </nav>
 </header>

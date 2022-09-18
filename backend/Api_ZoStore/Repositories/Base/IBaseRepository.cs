@@ -2,7 +2,7 @@
 {
     public interface IBaseRepository<T, TKey>
     {
-        public bool Create(T entity);
+        public void Create(T entity);
 
         public T Get(TKey key);
 

@@ -79,6 +79,14 @@ namespace Api_ZoStore.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Imagem")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<float>("Valor")
                         .HasColumnType("float");
 

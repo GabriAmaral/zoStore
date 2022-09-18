@@ -30,10 +30,10 @@ namespace Api_ZoStore.Controllers
             if(existUser is not null)
                 return BadRequest("Este usuário já existe");
 
-            if (repos.Create(user))
-                return Ok(true);
+            repos.Create(user);
+            return Ok(true);
 
-            return BadRequest();
+           
         }
 
         [HttpGet]
