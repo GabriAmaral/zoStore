@@ -40,3 +40,15 @@ img {
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+@media (max-width: 1400px) {
+  html {
+    font-size: 58.5%;
+  }
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 54.5%;
+  }
+}

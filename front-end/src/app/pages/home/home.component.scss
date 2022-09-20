@@ -5,6 +5,7 @@ section.page {
 
     &#home {
         position: relative;
+        overflow: hidden;
 
         .background {
             position: absolute;
@@ -40,7 +41,7 @@ section.page {
 
         .content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 1fr 1.5fr;
             align-content: center;
             height: 100%;
 
@@ -49,6 +50,7 @@ section.page {
                 justify-content: center;
                 align-items: center;
                 padding: 0 10rem;
+                padding-right: 0;
                 width: 100%;
 
                 p {
@@ -69,6 +71,39 @@ section.page {
                 height: 50rem;
                 left: calc(94% - 50rem);
                 position: relative;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .content {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .boneco {
+        height: 40rem !important;
+        left: calc(94% - 40rem) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    #home {
+        .content {
+            display: grid;
+            grid-template-columns: 1fr !important;
+
+            .infos {
+                z-index: 1;
+                padding-right: 10rem !important;
+            }
+
+            .boneco {
+                position: absolute !important;
+                opacity: .3;
+                transform: translate(-50%, -50%);
+                top: 67%;
+                left: 77% !important;
             }
         }
     }
