@@ -1,0 +1,68 @@
+.page-header {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    transition: all .25s;
+
+    &.scroll-page-header {
+        background: rgb(74 74 74 / 60%);
+        
+        .nav{
+            height: 5rem;
+        }
+    }
+
+    nav {
+        height: 7rem;
+        //background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+
+        .logo{
+            img{
+                height: 7rem;
+            }
+        }
+
+        .menu{
+            ul{
+                display: flex;
+                justify-content: space-around;
+                list-style: none;
+
+                li{
+                    a {
+                        padding: 2rem;
+                        font-size: 1.3rem;
+                        font-family: 'Roboto';
+                        font-style: normal;
+                        color: #fff;
+                        text-decoration: none;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        .login{
+            a {
+                padding: 2rem;
+                font-size: 1.3rem;
+                font-family: 'Roboto';
+                font-style: normal;
+                color: #fff;
+                text-decoration: none;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+}

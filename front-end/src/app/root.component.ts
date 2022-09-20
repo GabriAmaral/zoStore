@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+import { NativeService } from './core/native/native.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './root.component.html',
+})
+export class RootComponent {
+  constructor(private nativeService: NativeService) {
+  }  
+}
