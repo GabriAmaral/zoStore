@@ -1,0 +1,49 @@
+<section class="page form-default">
+  <div class="background">
+    <img class="lines" src="../../../assets/imgs/bg-lines-zo.png" alt="">
+    <div class="ellipse ellipse-top"></div>
+    <div class="ellipse ellipse-bottom"></div>
+  </div>
+
+  <div class="content">
+    <button [routerLink]="['/login']" class="return-button"><img src="../../../assets/imgs/voltar.png" alt=""></button>
+
+    <div class="infos-cadastro-cliente infos-form">
+      <p class="title">Faça seu cadastro</p>
+
+      <div class="inputs">
+        <form [formGroup]="model" ngForm (ngSubmit)="onSubmit()">
+
+          <div class="input-info">
+            <input autocomplete="off" placeholder="email" type="text" formControlName="email" [ngClass]="{error: model.controls?.email?.errors?.required }">
+          </div>
+    
+          <div class="input-info">
+            <input autocomplete="off" placeholder="senha" type="password" formControlName="password" [ngClass]="{error: model.controls?.password?.errors?.required}">
+          </div>
+
+          <div class="input-info">
+            <input autocomplete="off" placeholder="confirmar senha" type="password" formControlName="passwordConfirm" [ngClass]="{error: model.controls?.passwordConfirm?.errors?.required || model.controls?.passwordConfirm?.errors?.passwordInvalid}">
+          </div>
+
+          <div class="input-info">
+            <input autocomplete="off" placeholder="nome completo" type="text" formControlName="name" [ngClass]="{error: model.controls?.name?.errors?.required}">
+          </div>
+
+          <div class="input-info">
+            <input autocomplete="off" placeholder="id discord" type="text" formControlName="discord">
+          </div>
+
+          <div class="input-info">
+            <input accept="image/png, image/jpeg" type="file" (change)="handleFileInput($event)" formControlName="foto">
+          </div>
+        </form>
+      </div>
+      
+      <div class="button">
+        <button [disabled]="!model.valid" (click)="onSubmit()" type="submit">CADASTRAR</button>
+      </div>
+      
+    </div>
+  </div>
+</section>

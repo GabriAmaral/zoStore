@@ -1,0 +1,123 @@
+.page-header {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    transition: all .25s;
+
+    &.scroll-page-header {
+        background: rgb(74 74 74 / 60%);
+        
+        .nav{
+            height: 5rem;
+        }
+    }
+
+    nav {
+        height: 7rem;
+        //background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+
+        .logo{
+            img{
+                height: 7rem;
+            }
+        }
+
+        .menu{
+            ul{
+                display: flex;
+                justify-content: space-around;
+                list-style: none;
+
+                li{
+                    a {
+                        padding: 2rem;
+                        font-size: 1.3rem;
+                        font-family: 'Roboto';
+                        font-style: normal;
+                        color: #fff;
+                        text-decoration: none;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        .login {
+            background: #9063ce6b;
+            border-radius: 0.25rem;
+            padding: 0.75rem 2rem;
+
+            a {
+                padding: 2rem;
+                font-size: 1.3rem;
+                font-family: 'Roboto';
+                font-style: normal;
+                color: #fff;
+                text-decoration: none;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        .infos-user {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .25s;
+            margin: 0 1.5rem;
+
+            &:hover {
+                opacity: .7;
+                cursor: pointer;
+            }
+
+            img {
+                height: 4rem;
+                width: 4rem;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 0.2rem solid #eaa92d;
+                margin: 0 1rem;
+            }
+
+            a {
+                font-size: 1.3rem;
+                font-family: 'Roboto';
+                font-style: normal;
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+::ng-deep .menu-list-user {
+    background: #0000006e !important;
+    color: #fff;
+    margin: 1.5rem 0rem;
+
+    ::ng-deep .mat-icon {
+        color: #fff !important;
+    }
+
+    ::ng-deep button {
+        color: #fff !important;
+        font-size: 1.3rem;
+        padding: 0 3rem;
+        border-bottom: 1px solid #ffffff29;
+    }
+
+    .mat-menu-content {
+        padding: 0 !important;
+    }
+}

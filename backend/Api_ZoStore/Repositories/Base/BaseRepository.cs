@@ -23,6 +23,21 @@ namespace Api_ZoStore.Repositories.Base
             db.SaveChanges();
         }
 
+        public bool Update(T entity)
+        {
+            try
+            {
+                GetTable().Update(entity);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public T Get(TKey key)
         {
             try

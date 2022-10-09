@@ -1,0 +1,39 @@
+<header class="page-header" [ngClass]="{'scroll-page-header': isScrollTop}">
+    <nav>
+        <div class="logo">
+            <img *ngIf="!onlyUserInfos" src="../../../assets/imgs/ZoStore_Png.png" alt="">
+        </div>
+
+        <div class="menu" *ngIf="!onlyUserInfos">
+            <ul>
+                <li><a [routerLink]="['/']" routerLinkActive="router-link-active">HOME</a></li>
+                <li><a [routerLink]="['/produtos']" routerLinkActive="router-link-active">PRODUTOS</a></li>
+                <li><a *ngIf="usuarioMenu?.access == 1" [routerLink]="['/cadastro-produto']" routerLinkActive="router-link-active">CADASTRAR PRODUTO</a></li>
+                <li><a href="#">CONTATO</a></li>
+            </ul>
+        </div>
+
+        <div class="login" *ngIf="!usuarioMenu && !onlyUserInfos">
+            <a [routerLink]="['/login']">LOGIN</a>
+        </div>
+
+        <div class="infos-user" [matMenuTriggerFor]="perfilMenu" *ngIf="usuarioMenu">
+            <img [src]="usuarioMenu.foto" alt="">
+            <a>{{ usuarioMenu?.name }}</a>
+        </div>
+
+        <mat-menu class="menu-list-user" #perfilMenu="matMenu">
+            <button [routerLink]="['/perfil']" mat-menu-item>
+                <mat-icon>portrait</mat-icon>
+                <span>Meu perfil</span>
+            </button>
+
+            <button (click)="authService.desconectar()" mat-menu-item>
+                <mat-icon>settings_power</mat-icon>
+                <span>Desconectar</span>
+            </button>
+
+        </mat-menu>
+
+    </nav>
+</header>

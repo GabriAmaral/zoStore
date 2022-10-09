@@ -31,9 +31,16 @@ namespace Api_ZoStore.Controllers
                 return BadRequest("Este usuário já existe");
 
             repos.Create(user);
-            return Ok(true);
 
-           
+            return Ok(true);
+        }
+
+        [HttpPost]
+        public IActionResult Update([FromBody] Usuario user)
+        {
+            repos.Update(user);
+
+            return Ok(true);
         }
 
         [HttpGet]

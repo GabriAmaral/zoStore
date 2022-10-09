@@ -4,6 +4,8 @@
     {
         public void Create(T entity);
 
+        public bool Update(T entity);
+
         public T Get(TKey key);
 
         public bool Delete(TKey key);

@@ -1,0 +1,43 @@
+<section class="page login form-default">
+  <div class="background">
+      <img class="lines" src="../../../assets/imgs/bg-lines-zo.png" alt="">
+      <div class="ellipse ellipse-top"></div>
+      <div class="ellipse ellipse-bottom"></div>
+  </div>
+
+  <div class="content">
+    <button [routerLink]="['/']" class="return-button"><img src="../../../assets/imgs/voltar.png" alt=""></button>
+    
+    <div class="infos-form">
+      <p class="title">Realizar Login</p>
+
+      <div class="inputs">
+        <form [formGroup]="model" ngForm (ngSubmit)="onSubmit()">
+          <div class="input-info">
+            <p></p>
+            <input type="text" placeholder="email" formControlName="email" [ngClass]="{error: model.controls?.email?.errors?.required}">
+          </div>
+    
+          <div class="input-info">
+            <input type="password" placeholder="senha" formControlName="password" [ngClass]="{error: model.controls?.password?.errors?.required}">
+          </div>
+        </form>
+      </div>
+      
+      <div class="button">
+        <button [disabled]="!model.valid" (click)="onSubmit()" type="submit">LOGIN</button>
+        <p class="sub-item" [routerLink]="['/cadastro-cliente']">REALIZE SEU <span>CADASTRO</span> CLICANDO AQUI</p>
+        <!-- <p>Esqueceu sua senha? Clique aqui para recuperar</p> -->
+      </div>
+      
+      <!-- <div class="separator">
+        <p>Entre também com</p>
+      </div>
+
+      <div class="icons-login">
+        <div class="login discord"><img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Logo.png" alt=""></div>
+      </div> -->
+
+    </div>
+  </div>
+</section>

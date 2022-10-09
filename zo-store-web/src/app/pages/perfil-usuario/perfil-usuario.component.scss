@@ -1,0 +1,31 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-user {
+    border-radius: 50%;
+    height: 20rem;
+    width: 20rem;
+    object-fit: cover;
+    border: 0.2rem solid #eaa92d;
+    transition: all .5s;
+    pointer-events: unset !important;
+    z-index: 1;
+
+    &:hover {
+        opacity: .3;
+
+        & ~ .alter-img-user {
+            opacity: 1;
+        }
+    }
+}
+
+
+.alter-img-user {
+    position: absolute !important;
+    opacity: 0;
+    color: #fff !important;
+}

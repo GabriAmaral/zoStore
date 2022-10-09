@@ -11,6 +11,7 @@ namespace Api_ZoStore.Models.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         public int Access { get; set; }
+        public string Foto { get; set; }
 
     }
 }
