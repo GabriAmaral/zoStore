@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/layout/menu/menu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.component';
+import { ConsultarProdutosComponent } from './pages/produto/consultar-produtos/consultar-produtos.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 
 const routes: Routes = [
@@ -64,5 +65,6 @@ export class AppRoutingModule {
     ProdutosComponent,
     PerfilUsuarioComponent,
     HomeGerenciarComponent
+    ConsultarProdutosComponent
   ]
 }

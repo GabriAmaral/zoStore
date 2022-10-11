@@ -14,7 +14,6 @@
       <div class="inputs">
         <form [formGroup]="model" ngForm (ngSubmit)="onSubmit()">
           <div class="input-info">
-            <p></p>
             <input type="text" placeholder="email" formControlName="email" [ngClass]="{error: model.controls?.email?.errors?.required}">
           </div>
     

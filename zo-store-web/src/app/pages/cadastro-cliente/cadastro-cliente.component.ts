@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { cyrb53 } from 'src/app/core/authService/auth.service';
 import { BaseApiService } from 'src/app/core/baseApi/base-api.service';
 import { environment } from 'src/environments/environment';
 import { convertFileToBase64, getFileFromUrl } from '../cadastro-produto/cadastro-produto.component';
@@ -43,6 +44,9 @@ export class CadastroClienteComponent implements OnInit {
       // this.notify.error("Senhas estavam diferentes", { timer: 5000 })
       return
     }
+
+    this.model.value.password = cyrb53(this.model.value.password)
+    this.model.value.passwordConfirm = cyrb53(this.model.value.passwordConfirm)
 
     if(this.fileToUpload == null)
       this.fileToUpload = await getFileFromUrl('https://i.imgur.com/0UzV6qc.jpg', 'user.jpg');
