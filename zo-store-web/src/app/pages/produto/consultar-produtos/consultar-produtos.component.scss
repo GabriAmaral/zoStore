@@ -1,11 +1,51 @@
-.consulta-produtos .content {
+.consulta-produtos.content {
     flex-direction: column;
     padding: 2rem 5rem;
+    width: 70vw;
+
+    .table {
+        margin-top: 2rem;
+
+        height: 50vh;
+        overflow: auto;
+    }
 
     table {
         background: #ffffff0f;
         width: 100%;
-        margin-top: 2rem;
+
+        ::ng-deep .mat-cell {
+            color: rgba(182, 182, 182, 0.7);
+        }
+
+        ::ng-deep .mat-header-row {
+            background: #626262 !important;
+
+            th {
+                color: #fff;
+            }
+        }
+    }
+
+    .btn-action {
+        margin: 0 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: 0;
+        border-radius: 0.2rem;
+        color: #fff;
+        transition: all .25s;
+
+        &.delete {
+            background: #f1000073;
+        }
+        
+        &.update {
+            background: #6df10073;
+        }
+
+        &:hover {
+            opacity: .6;
+        }
     }
 
     .input-info {

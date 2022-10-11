@@ -14,10 +14,10 @@
             <p>PRODUTOS</p>
           </mat-expansion-panel-header>
           
-          <div class="item">
+          <div [routerLink]="['/gerenciar/consultar-produtos']" class="item">
             <mat-icon>search</mat-icon>
             <p>CONSULTAR PRODUTOS</p>
-          </div>
+          </div> 
           
           <div [routerLink]="['/gerenciar/cadastro-produto']" class="item">
             <mat-icon>library_add</mat-icon>

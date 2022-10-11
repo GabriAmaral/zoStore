@@ -49,7 +49,7 @@ export class CadastroProdutoComponent implements OnInit {
   
         if(res) {
           this.toastr.success("Cadastro realizado com sucesso", "");
-          this.router.navigateByUrl("/produtos")
+          this.router.navigateByUrl("/gerenciar/consultar-produtos")
         }
       })
     });

@@ -37,6 +37,14 @@ namespace Api_ZoStore.Controllers
             return Ok(true);
         }
 
+        [HttpPost]
+        public IActionResult Update([FromBody] Produto produto)
+        {
+            _produtoRepository.Update(produto);
+
+            return Ok(true);
+        }
+
         [HttpGet]
         public IActionResult BuscarProdutos()
         {

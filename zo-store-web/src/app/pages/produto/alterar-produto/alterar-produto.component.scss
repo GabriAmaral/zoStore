@@ -1,0 +1,34 @@
+.page {
+    background: transparent;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-user {
+    height: 20rem;
+    width: 100%;
+    object-fit: contain;
+    border: 0.2rem solid #eaa92d;
+    transition: all 0.5s;
+    pointer-events: unset !important;
+    z-index: 1;
+
+    &:hover {
+        opacity: .3;
+
+        & ~ .alter-img-user {
+            opacity: 1;
+        }
+    }
+}
+
+
+.alter-img-user {
+    position: absolute !important;
+    opacity: 0;
+    color: #fff !important;
+}

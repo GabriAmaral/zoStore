@@ -48,14 +48,11 @@ export class BaseApiService {
     return Observable.create((observer: Observer) => {
       response.subscribe(
         (res) => {
-          if (res.errors.length > 0) observer.error(res.errors);
-          else observer.next(res.success);
+          observer.next(res);
           observer.complete();
         },
         (error) => {
-          observer.error([
-            { title: error.name, detail: this.genericError, error },
-          ]);
+          observer.next(error)
         }
       );
     });

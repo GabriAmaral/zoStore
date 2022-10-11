@@ -54,27 +54,18 @@ export class PerfilUsuarioComponent implements OnInit {
       return
     }
 
-    if(this.fileToUpload == null && this.model.value.foto == "")
-      this.fileToUpload = await getFileFromUrl('https://i.imgur.com/0UzV6qc.jpg', 'user?.jpg');
+    this.baseApi.post(environment.baseApi + "api/Usuario/Update", this.model.value).subscribe((res: any) => {
+      if(res?.error) {
+        this.toastr.error(res?.error.toString(), 'Ops');
 
-    convertFileToBase64(this.fileToUpload).then((result) => {
-      this.model.value.foto = result;
+        return
+      }
 
-      this.baseApi.post(environment.baseApi + "api/Usuario/Update", this.model.value).subscribe((res: any) => {
-        if(res?.error) {
-          this.toastr.error(res?.error.toString(), 'Ops');
-  
-          return
-        }
-  
-        if(res) {
-          this.toastr.success("Atualizacão feita com sucesso", "");
-          this.loadInfos(true)
-        }
-      })
+      if(res) {
+        this.toastr.success("Atualizacão feita com sucesso", "");
+        this.loadInfos(true)
+      }
     })
-
-    
   }
 
   fileToUpload: File | any = null;

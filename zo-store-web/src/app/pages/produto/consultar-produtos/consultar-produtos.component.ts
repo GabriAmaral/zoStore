@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { BaseApiService } from 'src/app/core/baseApi/base-api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-consultar-produtos',
@@ -9,31 +12,44 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class ConsultarProdutosComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource: any = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
+  displayedColumns: string[] = [ 'id', 'nome', 'valor', 'actions' ];
+  produtos = [
+    // {id: 1, nome: 'Hydrogen', valor: 1.0079, descricao: 'H'},
+    // {id: 2,  nome: 'Helium',  valor: 4.0026, descricao: 'He'},
+    // {id: 3,  nome: 'Lithium', valor: 6.941, descricao: 'Li'},
+    // {id: 4,  nome: 'Beryllium', valor: 9.0122, descricao: 'Be'},
+    // {id: 5,  nome: 'Boron', valor: 10.811, descricao: 'B'},
+    // {id: 6,  nome: 'Carbon', valor: 12.0107, descricao: 'C'},
+    // {id: 7,  nome: 'Nitrogen', valor: 14.0067, descricao: 'N'},
+    // {id: 8,  nome: 'Oxygen', valor: 15.9994, descricao: 'O'},
+    // {id: 9,  nome: 'Fluorine', valor: 18.9984, descricao: 'F'},
+    // {id: 10, nome: 'Neon', valor: 20.1797, descricao: 'Ne'},
+    // {id: 1,  nome: 'Hydrogen', valor: 1.0079, descricao: 'H'},
+    // {id: 2,  nome: 'Helium', valor: 4.0026, descricao: 'He'},
+    // {id: 3,  nome: 'Lithium', valor: 6.941, descricao: 'Li'},
+    // {id: 4,  nome: 'Beryllium', valor: 9.0122, descricao: 'Be'},
+    // {id: 5,  nome: 'Boron', valor: 10.811, descricao: 'B'},
+    // {id: 6,  nome: 'Carbon', valor: 12.0107, descricao: 'C'},
+    // {id: 7,  nome: 'Nitrogen', valor: 14.0067, descricao: 'N'},
+    // {id: 8,  nome: 'Oxygen', valor: 15.9994, descricao: 'O'},
+    // {id: 9,  nome: 'Fluorine', valor: 18.9984, descricao: 'F'},
+    // {id: 10, nome: 'Neon', valor: 20.1797, descricao: 'Ne'},
+  ]
 
-  constructor() { }
+  dataSource = new MatTableDataSource(this.produtos);
+
+  constructor(
+    private baseApi: BaseApiService
+  ) {
+    this.recomporProdutos()
+  }
+
+  recomporProdutos() {
+    this.baseApi.get(environment.baseApi + "api/Produto/BuscarProdutos").subscribe((res: any) => {
+      this.produtos = res
+      this.dataSource = new MatTableDataSource(this.produtos);
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -41,6 +57,16 @@ export class ConsultarProdutosComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  excluirProduto(produto: any) {
+    this.baseApi.delete(environment.baseApi + "api/Produto/DeletarProduto?id=" + produto.id).subscribe((res: any) => {
+      this.recomporProdutos()
+    })
+  }
+
+  editarProduto(produto: any) {
+    console.log(produto)
   }
 
 }

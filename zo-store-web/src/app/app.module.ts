@@ -17,7 +17,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 @NgModule({
   declarations: [
     AppRoutingModule.componentsDeclarations,
@@ -35,7 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSidenavModule,
     MatExpansionModule,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
   providers: [
     BaseApiService,

@@ -1,0 +1,42 @@
+<section class="page form-default">
+  <div class="content">
+    <!-- <button [routerLink]="['/']" class="return-button"><img src="../../../assets/imgs/voltar.png" alt=""></button> -->
+
+    <div class="infos-cadastro-produto infos-form">
+      <p class="title">alterar produto</p>
+
+      <div class="inputs">
+        <form [formGroup]="model" ngForm (ngSubmit)="onSubmit()">
+          <div class="input-info">
+            <input autocomplete="off" placeholder="nome" type="text" formControlName="nome" [ngClass]="{error: model.controls?.nome?.errors?.required }">
+          </div>
+    
+          <div class="input-info">
+            <input autocomplete="off" placeholder="descrição" type="text" formControlName="descricao" [ngClass]="{error: model.controls?.descricao?.errors?.required }">
+          </div>
+
+          <div class="input-info">
+            <input autocomplete="off" placeholder="valor" type="number" formControlName="valor" [ngClass]="{error: model.controls?.valor?.errors?.required }">
+          </div>
+
+          <!-- <div class="input-info">
+            <input accept="image/png, image/jpeg" type="file" (change)="handleFileInput($event)" formControlName="imagem">
+          </div> -->
+
+          <div class="input-info center">
+            <img (click)="alterImage.click()" class="img-user" [src]="model.value?.imagem" alt="">
+            <p class="alter-img-user">ALTERAR IMAGEM</p>
+
+            <input #alterImage style="display: none;" accept="image/png, image/jpeg" type="file" (change)="handleFileInput($event)" formControlName="imagem">
+          </div>
+
+        </form>
+      </div>
+      
+      <div class="button">
+        <button [disabled]="!model.valid" (click)="onSubmit()" type="submit">ATUALIZAR</button>
+      </div>
+      
+    </div>
+  </div>
+</section>
