@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300)
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150)
       this.isScrollTop = true
     else
       this.isScrollTop = false

@@ -35,6 +35,7 @@ export class PerfilUsuarioComponent implements OnInit {
         password: [user?.password, Validators.required],
         passwordConfirm: [user?.password, Validators.required],
         email: [user?.email, Validators.required],
+        access: user?.access,
         discord: user?.discord,
         foto: user?.foto
       });

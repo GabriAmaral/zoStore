@@ -8,7 +8,6 @@
             <ul>
                 <li><a [routerLink]="['/']" routerLinkActive="router-link-active">HOME</a></li>
                 <li><a [routerLink]="['/produtos']" routerLinkActive="router-link-active">PRODUTOS</a></li>
-                <li><a *ngIf="usuarioMenu?.access == 1" [routerLink]="['/cadastro-produto']" routerLinkActive="router-link-active">CADASTRAR PRODUTO</a></li>
                 <li><a href="#">CONTATO</a></li>
             </ul>
         </div>
@@ -28,8 +27,13 @@
                 <span>Meu perfil</span>
             </button>
 
+            <button *ngIf="usuarioMenu?.access == 1" [routerLink]="['/gerenciar']" mat-menu-item>
+                <mat-icon>portrait</mat-icon>
+                <span>Gerenciar sistema</span>
+            </button>
+
             <button (click)="authService.desconectar()" mat-menu-item>
-                <mat-icon>settings_power</mat-icon>
+                <mat-icon>exit_to_app</mat-icon>
                 <span>Desconectar</span>
             </button>
 

@@ -1,0 +1,126 @@
+.content {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-navigate {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+
+    display: flex;
+}
+
+.menu-sidenav-button {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0 !important;
+    background: rgb(249 171 0 / 74%);
+    outline: none;
+    color: #fff;
+    margin: 0 .5rem;
+}
+
+::ng-deep .menu-gerenciar .page-header {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+    width: fit-content !important;
+}
+
+::ng-deep .mat-drawer-container {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+
+    .mat-drawer {
+        background-color: #ffffff3d;
+    }
+
+    .mat-expansion-panel {
+        background: transparent;
+        box-shadow: none;
+        width: 15vw;
+        color: #fff;
+        border-radius: 0 !important;
+
+        .mat-content {
+            text-align: center;
+            // justify-content: center;
+            align-items: center;
+            padding: 0;
+            height: fit-content;
+            // margin-top: 0.5rem;
+
+            mat-icon {
+                font-size: 2.1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            p {    
+                margin: 0rem 1rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        .mat-expansion-indicator {
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff !important;
+
+            &::after {
+                color: #fff !important;
+            }
+        }
+
+        .mat-expansion-panel-header {
+            border-radius: 0;
+            margin: 0;
+            height: fit-content;
+            padding: 1rem 2.5rem;
+        }
+
+        .mat-expansion-panel-header.mat-expanded {
+            background: rgb(255 255 255 / 23%);
+        }
+
+        .mat-expansion-panel-body {
+            margin: 0;
+            padding: 0;
+
+            .item {
+                padding: 1.5rem 2.5rem;
+                display: flex;
+                align-items: center;
+                transition: all .25s;
+                font-size: 1.2rem;
+                padding-left: 4rem;
+
+                mat-icon {
+                    font-size: 1.9rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.05);
+                }
+
+                p {
+                    margin: 0 1rem;
+                }
+            }
+        }
+    }
+}

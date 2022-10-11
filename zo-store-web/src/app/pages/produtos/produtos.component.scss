@@ -8,11 +8,10 @@ section.page {
 
 #produtos {
     min-height: 100vh;
-    height: 100%;
+    height: fit-content;
     position: relative;
 
     .content {
-        height: 100%;
         width: 100%;
         display: grid;
         grid-template-rows: 1fr;

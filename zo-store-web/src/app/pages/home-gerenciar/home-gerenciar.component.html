@@ -1,0 +1,68 @@
+<section class="page">
+  <div class="background">
+    <img class="lines" src="../../../assets/imgs/bg-lines-zo.png" alt="">
+    <div class="ellipse ellipse-top"></div>
+    <div class="ellipse ellipse-bottom"></div>
+  </div>
+
+  <mat-drawer-container class="container-sidenav" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-icon>shopping_bag</mat-icon>
+            <p>PRODUTOS</p>
+          </mat-expansion-panel-header>
+          
+          <div class="item">
+            <mat-icon>search</mat-icon>
+            <p>CONSULTAR PRODUTOS</p>
+          </div>
+          
+          <div [routerLink]="['/gerenciar/cadastro-produto']" class="item">
+            <mat-icon>library_add</mat-icon>
+            <p>CADASTRAR PRODUTO</p>
+          </div>
+
+          <div class="item">
+            <mat-icon>edit_square</mat-icon>
+            <p>ALTERAR PRODUTO</p>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <p>USUÁRIO</p>
+          </mat-expansion-panel-header>
+          
+          <div class="item">
+            <p>CONSULTAR USUÁRIOS</p>
+          </div>
+
+          <div class="item">
+            <p>ALTERAR USUÁRIO</p>
+          </div>
+        </mat-expansion-panel>
+    
+      </mat-accordion>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content content">
+      <menu class="menu-gerenciar" [onlyUserInfos]="true"></menu>
+
+      <div class="buttons-navigate">
+        <button class="menu-sidenav-button" type="button" mat-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+  
+        <button class="menu-sidenav-button" type="button" mat-button [routerLink]="['/']">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      
+
+      <router-outlet></router-outlet>
+    </div>
+  
+  </mat-drawer-container>
+</section>

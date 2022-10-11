@@ -5,6 +5,7 @@ import { AuthGuard } from './core/authGuard/authGuard';
 import { AuthGuardAdmin } from './core/authGuard/authGuardAdmin';
 import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
 import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
+import { HomeGerenciarComponent } from './pages/home-gerenciar/home-gerenciar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/layout/menu/menu.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -26,11 +27,6 @@ const routes: Routes = [
     component: CadastroClienteComponent
   },
   {
-    path: 'cadastro-produto',
-    component: CadastroProdutoComponent,
-    canActivate: [ AuthGuard, AuthGuardAdmin ]
-  },
-  {
     path: 'produtos',
     component: ProdutosComponent
   },
@@ -38,6 +34,17 @@ const routes: Routes = [
     path: 'perfil',
     component: PerfilUsuarioComponent,
     canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'gerenciar',
+    component: HomeGerenciarComponent,
+    canActivate: [ AuthGuard, AuthGuardAdmin ],
+    children: [
+      {
+        path: 'cadastro-produto',
+        component: CadastroProdutoComponent,
+      },
+    ]
   },
 ];
 
@@ -55,6 +62,7 @@ export class AppRoutingModule {
     CadastroClienteComponent,
     CadastroProdutoComponent,
     ProdutosComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    HomeGerenciarComponent
   ]
 }

@@ -12,6 +12,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MatMenuModule } from '@angular/material/menu';
     FormsModule,
     HttpClientModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule,
+    MatExpansionModule,
   ],
   providers: [
     BaseApiService,
