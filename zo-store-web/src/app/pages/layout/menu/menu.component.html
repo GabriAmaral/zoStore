@@ -9,6 +9,7 @@
                 <li><a [routerLink]="['/']" routerLinkActive="router-link-active">HOME</a></li>
                 <li><a [routerLink]="['/produtos']" routerLinkActive="router-link-active">PRODUTOS</a></li>
                 <li><a *ngIf="usuarioMenu?.access == 1" [routerLink]="['/cadastro-produto']" routerLinkActive="router-link-active">CADASTRAR PRODUTO</a></li>
+                <li><a *ngIf="usuarioMenu?.access == 1" [routerLink]="['/consulta-produtos']" routerLinkActive="router-link-active">CONSUKTA PRODUTOS</a></li>
                 <li><a href="#">CONTATO</a></li>
             </ul>
         </div>

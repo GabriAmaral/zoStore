@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/core/authService/auth.service';
+import { AuthService, cyrb53 } from 'src/app/core/authService/auth.service';
 import { BaseApiService } from 'src/app/core/baseApi/base-api.service';
 import { environment } from 'src/environments/environment';
 
@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.model.value.password = cyrb53(this.model.value.password)
+
     this.baseApi.post(environment.baseApi + "api/Usuario/CheckLogin", this.model.value).subscribe((res: any) => {
       if(res?.error) {
         this.model.reset()

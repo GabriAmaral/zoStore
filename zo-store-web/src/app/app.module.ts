@@ -12,10 +12,11 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
-    AppRoutingModule.componentsDeclarations
+    AppRoutingModule.componentsDeclarations,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,9 @@ import { MatMenuModule } from '@angular/material/menu';
     FormsModule,
     HttpClientModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatFormFieldModule
   ],
   providers: [
     BaseApiService,
