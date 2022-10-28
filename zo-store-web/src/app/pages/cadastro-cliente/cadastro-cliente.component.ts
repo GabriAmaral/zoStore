@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { cyrb53 } from 'src/app/core/authService/auth.service';
 import { BaseApiService } from 'src/app/core/baseApi/base-api.service';
 import { environment } from 'src/environments/environment';
-import { convertFileToBase64, getFileFromUrl } from '../cadastro-produto/cadastro-produto.component';
+import { convertFileToBase64, getFileFromUrl } from '../produto/cadastro-produto/cadastro-produto.component';
 @Component({
   selector: 'app-cadastro-cliente',
   templateUrl: './cadastro-cliente.component.html',

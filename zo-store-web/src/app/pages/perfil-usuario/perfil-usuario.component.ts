@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/authService/auth.service';
 import { BaseApiService } from 'src/app/core/baseApi/base-api.service';
 import { environment } from 'src/environments/environment';
-import { convertFileToBase64, getFileFromUrl } from '../cadastro-produto/cadastro-produto.component';
+import { convertFileToBase64, getFileFromUrl } from '../produto/cadastro-produto/cadastro-produto.component';
 @Component({
   selector: 'app-perfil-usuario',
   templateUrl: './perfil-usuario.component.html',
@@ -16,6 +16,7 @@ import { convertFileToBase64, getFileFromUrl } from '../cadastro-produto/cadastr
 })
 export class PerfilUsuarioComponent implements OnInit {
   model: any = null
+  foto: any = null
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,7 @@ export class PerfilUsuarioComponent implements OnInit {
 
   loadInfos(atualizar: boolean) {
     this.authService.buscarUsuario(atualizar).then(user => {
+      this.foto = user?.foto
       this.model = this.formBuilder.group({
         id: [user?.id],
         name: [user?.name, Validators.required],
@@ -54,6 +56,9 @@ export class PerfilUsuarioComponent implements OnInit {
       return
     }
 
+    if(this.foto != this.model.value?.foto)
+      this.model.value.foto = this.foto
+
     this.baseApi.post(environment.baseApi + "api/Usuario/Update", this.model.value).subscribe((res: any) => {
       if(res?.error) {
         this.toastr.error(res?.error.toString(), 'Ops');
@@ -75,6 +80,7 @@ export class PerfilUsuarioComponent implements OnInit {
     this.fileToUpload = (target.files as FileList)[0];
 
     convertFileToBase64(this.fileToUpload).then((result) => {
+      this.foto = result
       this.model.value.foto = result;
     })
   }

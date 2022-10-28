@@ -23,24 +23,17 @@
             <mat-icon>library_add</mat-icon>
             <p>CADASTRAR PRODUTO</p>
           </div>
-
-          <div class="item">
-            <mat-icon>edit_square</mat-icon>
-            <p>ALTERAR PRODUTO</p>
-          </div>
         </mat-expansion-panel>
 
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <p>USUÁRIO</p>
+            <mat-icon>group</mat-icon>
+            <p>CLIENTES</p>
           </mat-expansion-panel-header>
           
-          <div class="item">
-            <p>CONSULTAR USUÁRIOS</p>
-          </div>
-
-          <div class="item">
-            <p>ALTERAR USUÁRIO</p>
+          <div [routerLink]="['/gerenciar/consultar-clientes']" class="item">
+            <mat-icon>search</mat-icon>
+            <p>CONSULTAR CLIENTES</p>
           </div>
         </mat-expansion-panel>
     

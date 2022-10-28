@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './cadastro-produto.component.html',
   styleUrls: [
     './cadastro-produto.component.scss',
-    '../../shared/styles/default-form.scss'
+    '../../../shared/styles/default-form.scss'
   ]
 })
 export class CadastroProdutoComponent implements OnInit {

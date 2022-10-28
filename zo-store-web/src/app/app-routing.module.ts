@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './core/authGuard/authGuard';
 import { AuthGuardAdmin } from './core/authGuard/authGuardAdmin';
 import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
-import { CadastroProdutoComponent } from './pages/cadastro-produto/cadastro-produto.component';
+import { CadastroProdutoComponent } from './pages/produto/cadastro-produto/cadastro-produto.component';
 import { HomeGerenciarComponent } from './pages/home-gerenciar/home-gerenciar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/layout/menu/menu.component';
@@ -13,6 +13,7 @@ import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.co
 import { AlterarProdutoComponent } from './pages/produto/alterar-produto/alterar-produto.component';
 import { ConsultarProdutosComponent } from './pages/produto/consultar-produtos/consultar-produtos.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { ConsultarClientesComponent } from './pages/cliente/consultar-clientes/consultar-clientes.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,10 @@ const routes: Routes = [
         path: 'alterar-produto/:id',
         component: AlterarProdutoComponent,
       },
+      {
+        path: 'consultar-clientes',
+        component: ConsultarClientesComponent
+      }
     ]
   },
 ];
@@ -75,6 +80,7 @@ export class AppRoutingModule {
     PerfilUsuarioComponent,
     HomeGerenciarComponent,
     ConsultarProdutosComponent,
-    AlterarProdutoComponent
+    AlterarProdutoComponent,
+    ConsultarClientesComponent
   ]
 }

@@ -50,6 +50,20 @@ namespace Api_ZoStore.Controllers
             return Ok(users);
         }
 
+        [HttpGet]
+        public IActionResult GetClientes()
+        {
+            var users = repos.GetAll().Where(x => x.Access == 0).ToList();
+            return Ok(users);
+        }
+
+        [HttpGet]
+        public IActionResult GetFuncionarios()
+        {
+            var users = repos.GetAll().Where(x => x.Access != 0).FirstOrDefault();
+            return Ok(users);
+        }
+
         [HttpPost]
         public IActionResult CheckLogin([FromBody] Usuario user)
         {

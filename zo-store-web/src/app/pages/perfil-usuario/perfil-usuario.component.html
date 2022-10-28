@@ -15,7 +15,7 @@
         <form [formGroup]="model" ngForm (ngSubmit)="onSubmit()">
 
           <div class="input-info center">
-            <img (click)="alterImage.click()" class="img-user" [src]="model.value?.foto" alt="">
+            <img (click)="alterImage.click()" class="img-user" [src]="foto" alt="">
             <p class="alter-img-user">ALTERAR FOTO</p>
 
             <input #alterImage style="display: none;" accept="image/png, image/jpeg" type="file" (change)="handleFileInput($event)" formControlName="foto">
