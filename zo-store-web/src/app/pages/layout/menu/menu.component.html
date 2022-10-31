@@ -12,13 +12,20 @@
             </ul>
         </div>
 
-        <div class="login" *ngIf="!usuarioMenu && !onlyUserInfos">
-            <a [routerLink]="['/login']">LOGIN</a>
-        </div>
+        <div class="infos-user">
+            <div class="login" *ngIf="!usuarioMenu && !onlyUserInfos">
+                <a [routerLink]="['/login']">LOGIN</a>
+            </div>
+            
+            <div *ngIf="usuarioMenu" [matMenuTriggerFor]="perfilMenu" class="infos">
+                <img [src]="usuarioMenu.foto" alt="">
+                <a>{{ usuarioMenu?.name }}</a>
+            </div>
 
-        <div class="infos-user" [matMenuTriggerFor]="perfilMenu" *ngIf="usuarioMenu">
-            <img [src]="usuarioMenu.foto" alt="">
-            <a>{{ usuarioMenu?.name }}</a>
+            <div *ngIf="!onlyUserInfos" (click)="opened = !opened" class="kart">
+                <mat-icon>shopping_cart</mat-icon>
+                <div class="itens">{{ cart?.length }}</div>
+            </div>
         </div>
 
         <mat-menu class="menu-list-user" #perfilMenu="matMenu">
@@ -28,7 +35,7 @@
             </button>
 
             <button *ngIf="usuarioMenu?.access == 1" [routerLink]="['/gerenciar']" mat-menu-item>
-                <mat-icon>portrait</mat-icon>
+                <mat-icon>settings</mat-icon>
                 <span>Gerenciar sistema</span>
             </button>
 
@@ -38,6 +45,46 @@
             </button>
 
         </mat-menu>
-
     </nav>
 </header>
+
+<ng-sidebar-container *ngIf="!onlyUserInfos" class="menu-cart">
+    <ng-sidebar [closeOnClickOutside]="true" [animate]="animateOpen" [(opened)]="opened" position="right">
+        <div class="header">
+            <p>Seu carrinho</p>
+            <mat-icon (click)="opened = false">close</mat-icon>
+        </div>
+
+        <div class="infos">
+            <div class="itens">
+                <p class="not-item" *ngIf="itensCart.length == 0">nenhum item em seu carrinho</p>
+                
+                <div *ngFor="let item of itensCart" class="item">
+                    <img [src]="item.imagem" alt="">
+
+                    <div class="details">
+                        <p class="name">{{ item.nome }}</p>
+                        <p class="value">Valor: <span>{{ item.valor | currency: 'BRL' }}</span></p>
+                        <button (click)="cartService.removerItemCart(item.id)"><mat-icon>delete</mat-icon> Remover </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bottom">
+                <div class="total">
+                    <hr><p>Total: {{ valorTotalCart | currency: 'BRL' }}</p><hr>
+                </div>
+
+                <div class="btns">
+                    <button>Finalizar compra</button>
+                </div>
+            </div>
+        </div>
+
+        <img class="background" src="https://imgur.com/2jSSLze.png" alt="">
+        <img class="background-two" src="https://imgur.com/2jSSLze.png" alt="">
+    </ng-sidebar>
+
+    <div ng-sidebar-content>
+    </div>
+</ng-sidebar-container>

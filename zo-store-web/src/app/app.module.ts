@@ -17,6 +17,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CartService } from './core/cartService/cart.service';
+import { SidebarModule } from 'ng-sidebar';
 @NgModule({
   declarations: [
     AppRoutingModule.componentsDeclarations,
@@ -35,10 +37,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatExpansionModule,
     MatTableModule,
     MatFormFieldModule,
+    SidebarModule
   ],
   providers: [
     BaseApiService,
-    AuthService
+    AuthService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

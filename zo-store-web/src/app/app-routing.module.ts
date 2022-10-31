@@ -14,6 +14,7 @@ import { AlterarProdutoComponent } from './pages/produto/alterar-produto/alterar
 import { ConsultarProdutosComponent } from './pages/produto/consultar-produtos/consultar-produtos.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { ConsultarClientesComponent } from './pages/cliente/consultar-clientes/consultar-clientes.component';
+import { HomeInfosComponent } from './pages/home-gerenciar/home-infos/home-infos.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
     component: HomeGerenciarComponent,
     canActivate: [ AuthGuard, AuthGuardAdmin ],
     children: [
+      {
+        path: '',
+        component: HomeInfosComponent,
+      },
       {
         path: 'cadastro-produto',
         component: CadastroProdutoComponent,
@@ -81,6 +86,7 @@ export class AppRoutingModule {
     HomeGerenciarComponent,
     ConsultarProdutosComponent,
     AlterarProdutoComponent,
-    ConsultarClientesComponent
+    ConsultarClientesComponent,
+    HomeInfosComponent
   ]
 }

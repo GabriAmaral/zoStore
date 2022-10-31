@@ -23,6 +23,52 @@
     }
 }
 
+.alterar-senha {
+    &.active {
+        padding: 0rem 1rem;
+        border: 0.2rem solid #eaa92d;
+        border-radius: 0.375rem;
+    }
+
+    .input-info {
+        margin: 1.5rem 0 !important;
+    }
+}
+
+.custom-alter-password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .button {
+        width: 65% !important;
+        font-size: 1.4rem !important;
+        padding: 1rem;
+        border: 0;
+        border-radius: 0.5rem;
+        color: #fff !important;
+        background: rgba(111, 0, 255, 0.8);
+        border: 1px solid #422064;
+        box-shadow: 0px 0px 23px rgba(234, 169, 45, 0.2);
+        font-weight: 600;
+        transition: all .25s;
+
+        margin: 0;
+
+        &:hover {
+            background: rgba(86, 0, 197, 0.8);
+            cursor: pointer;
+        }
+
+        &:disabled {
+            opacity: .3;
+
+            &:hover {
+                background: rgba(111, 0, 255, 0.8);
+            }
+        }
+    }
+}
 
 .alter-img-user {
     position: absolute !important;

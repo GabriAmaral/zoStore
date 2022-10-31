@@ -5,9 +5,26 @@
     <div class="ellipse ellipse-bottom"></div>
   </div>
 
-  <mat-drawer-container class="container-sidenav" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
+  <ng-sidebar-container class="side-menu">
+    <ng-sidebar [closeOnClickOutside]="true" [animate]="animateOpen" [(opened)]="opened">
       <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-icon>home</mat-icon>
+            <p>HOME</p>
+          </mat-expansion-panel-header>
+          
+          <div [routerLink]="['/']" class="item">
+            <mat-icon>home</mat-icon>
+            <p>HOME GERAL</p>
+          </div> 
+          
+          <div [routerLink]="['/gerenciar']" class="item">
+            <mat-icon>home</mat-icon>
+            <p>HOMER GERENCIAL</p>
+          </div>
+        </mat-expansion-panel>
+
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-icon>shopping_bag</mat-icon>
@@ -38,13 +55,13 @@
         </mat-expansion-panel>
     
       </mat-accordion>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content content">
+    </ng-sidebar>
+
+    <div ng-sidebar-content class="content">
       <menu class="menu-gerenciar" [onlyUserInfos]="true"></menu>
 
-      <div class="buttons-navigate">
-        <button class="menu-sidenav-button" type="button" mat-button (click)="drawer.toggle()">
+      <div *ngIf="!opened" class="buttons-navigate">
+        <button class="menu-sidenav-button" type="button" mat-button (click)="opened = !opened">
           <mat-icon>menu</mat-icon>
         </button>
   
@@ -52,10 +69,9 @@
           <mat-icon>home</mat-icon>
         </button>
       </div>
-      
 
       <router-outlet></router-outlet>
     </div>
-  
-  </mat-drawer-container>
+  </ng-sidebar-container>
+
 </section>

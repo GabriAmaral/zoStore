@@ -25,9 +25,24 @@
             <input autocomplete="off" placeholder="email" type="text" formControlName="email" [ngClass]="{error: model.controls?.email?.errors?.required }">
           </div>
 
-          <!-- <div class="input-info">
-            <input autocomplete="off" placeholder="senha" type="password" formControlName="password" [ngClass]="{error: model.controls?.password?.errors?.required || model.controls?.passwordConfirm?.errors?.passwordInvalid}">
-          </div> -->
+          <div class="alterar-senha" [ngClass]="{active: alterarSenha}">
+            <div *ngIf="!alterarSenha" class="input-info custom-alter-password">
+              <p>Senha</p>
+              <p class="button" (click)="alterarSenha = true; model.get('password').setValue('')">ALTERAR SENHA</p>
+            </div>
+  
+            <div *ngIf="alterarSenha" class="input-info">
+              <input autocomplete="off" placeholder="senha antiga" type="password" formControlName="passwordBack" [ngClass]="{error: model.controls?.passwordBack?.errors?.required || model.controls?.passwordBack?.errors?.passwordInvalid}">
+            </div>
+  
+            <div *ngIf="alterarSenha" class="input-info">
+              <input autocomplete="off" placeholder="nova senha" type="password" formControlName="password" [ngClass]="{error: model.controls?.password?.errors?.required || model.controls?.password?.errors?.passwordInvalid}">
+            </div>
+  
+            <div *ngIf="alterarSenha" class="input-info">
+              <input autocomplete="off" placeholder="confirmar nova senha" type="password" formControlName="passwordConfirm" [ngClass]="{error: model.controls?.passwordConfirm?.errors?.required || model.controls?.passwordConfirm?.errors?.passwordInvalid}">
+            </div>
+          </div>
 
           <div class="input-info">
             <input autocomplete="off" placeholder="nome completo" type="text" formControlName="name" [ngClass]="{error: model.controls?.name?.errors?.required}">

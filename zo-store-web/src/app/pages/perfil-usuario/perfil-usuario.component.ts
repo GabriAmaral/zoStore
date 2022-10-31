@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/core/authService/auth.service';
+import { AuthService, cyrb53 } from 'src/app/core/authService/auth.service';
 import { BaseApiService } from 'src/app/core/baseApi/base-api.service';
 import { environment } from 'src/environments/environment';
 import { convertFileToBase64, getFileFromUrl } from '../produto/cadastro-produto/cadastro-produto.component';
@@ -18,6 +18,8 @@ export class PerfilUsuarioComponent implements OnInit {
   model: any = null
   foto: any = null
 
+  alterarSenha = false
+
   constructor(
     private formBuilder: FormBuilder,
     private baseApi: BaseApiService,
@@ -31,11 +33,13 @@ export class PerfilUsuarioComponent implements OnInit {
   loadInfos(atualizar: boolean) {
     this.authService.buscarUsuario(atualizar).then(user => {
       this.foto = user?.foto
+
       this.model = this.formBuilder.group({
         id: [user?.id],
         name: [user?.name, Validators.required],
-        password: [user?.password, Validators.required],
-        passwordConfirm: [user?.password, Validators.required],
+        password: [user?.password],
+        passwordConfirm: [''],
+        passwordBack: [''],
         email: [user?.email, Validators.required],
         access: user?.access,
         discord: user?.discord,
@@ -48,18 +52,48 @@ export class PerfilUsuarioComponent implements OnInit {
   }
 
   async onSubmit() {
-    if(this.model.value.password != this.model.value.passwordConfirm) {
-      this.model.get("passwordConfirm").setValue("");
-      this.model.get("password").setValue("");
+    let valueModel = { ... this.model.value };
 
-      // this.notify.error("Senhas estavam diferentes", { timer: 5000 })
-      return
+    if(this.alterarSenha) {
+      if(valueModel?.password == '' || valueModel?.password == null || valueModel?.passwordConfirm == '' || valueModel?.passwordConfirm == null || valueModel?.passwordBack == '' || valueModel?.passwordBack == null) {
+        this.toastr.error("Preencha todas as senhas", "");
+        return
+      }
+
+      let passwordBackNew = cyrb53(valueModel.password)
+
+      valueModel.password = cyrb53(this.model.value.passwordBack)
+      valueModel.passwordConfirm = cyrb53(this.model.value.passwordConfirm)
+
+      delete valueModel.passwordBack;
+
+      let requestVerifyPassword = this.baseApi.post(environment.baseApi + "api/Usuario/CheckPasswordAlter", valueModel).toPromise()
+      let verifyPassword = await Promise.all([requestVerifyPassword]);
+
+      if(!verifyPassword[0]) {
+        this.model.get("passwordBack").setValue("");
+        this.toastr.error("A senha anterior está errada", "");
+
+        return 
+      }
+
+      valueModel.password = passwordBackNew
+        
+      if(valueModel.password != valueModel.passwordConfirm) {
+        this.model.get("passwordConfirm").setValue("");
+        this.model.get("password").setValue("");
+
+        this.toastr.error("As senhas estavam diferentes", "");
+        return
+      }
+    } else {
+      delete valueModel.passwordBack;
     }
 
-    if(this.foto != this.model.value?.foto)
-      this.model.value.foto = this.foto
+    if(this.foto != valueModel?.foto)
+    valueModel.foto = this.foto
 
-    this.baseApi.post(environment.baseApi + "api/Usuario/Update", this.model.value).subscribe((res: any) => {
+    this.baseApi.post(environment.baseApi + "api/Usuario/Update", valueModel).subscribe((res: any) => {
       if(res?.error) {
         this.toastr.error(res?.error.toString(), 'Ops');
 
@@ -67,6 +101,8 @@ export class PerfilUsuarioComponent implements OnInit {
       }
 
       if(res) {
+        this.alterarSenha = false
+
         this.toastr.success("Atualizacão feita com sucesso", "");
         this.loadInfos(true)
       }

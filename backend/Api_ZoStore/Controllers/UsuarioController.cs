@@ -65,6 +65,20 @@ namespace Api_ZoStore.Controllers
         }
 
         [HttpPost]
+        public IActionResult CheckPasswordAlter([FromBody] Usuario user)
+        {
+            var loginUser = repos.GetAll().Where(x => x.Email == user.Email).FirstOrDefault();
+
+            if (loginUser is not null)
+            {
+                if (loginUser.Password == user.Password)
+                    return Ok(true);
+            }
+
+            return Ok(false);
+        }
+
+        [HttpPost]
         public IActionResult CheckLogin([FromBody] Usuario user)
         {
             var loginUser = repos.GetAll().Where(x => x.Email == user.Email).FirstOrDefault();

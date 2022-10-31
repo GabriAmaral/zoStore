@@ -5,12 +5,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.outlet {
+        position: absolute;
+        top: 0;
+        z-index: 0;
+    }
 }
 
 .buttons-navigate {
     position: absolute;
     left: 1rem;
     top: 1rem;
+    z-index: 999;
 
     display: flex;
 }
@@ -34,18 +41,18 @@
     width: fit-content !important;
 }
 
-::ng-deep .mat-drawer-container {
+.side-menu {
     height: 100%;
     width: 100%;
     background: transparent;
 
-    .mat-drawer {
-        background-color: #ffffff3d;
+    ::ng-deep aside {
+        background: #ffffff3d;
     }
 
-    .mat-expansion-panel {
+    ::ng-deep .mat-expansion-panel {
         background: transparent;
-        box-shadow: none;
+        box-shadow: none !important;
         width: 15vw;
         color: #fff;
         border-radius: 0 !important;

@@ -1,14 +1,27 @@
-<menu></menu>
-
 <section id="produtos" class="page produtos">
+    <div class="background">
+        <img class="lines" src="../../../assets/imgs/bg-lines-zo.png" alt="">
+        <div class="ellipse ellipse-top"></div>
+        <div class="ellipse ellipse-bottom"></div>
+    </div>
+
+    <menu>
+        
+    </menu>
+
     <div class="content">
         <div *ngFor="let produto of produtos; let i = index" class="produto" [ngClass]="{ reverse: i % 2 == 1 }">
             <img [src]="produto.imagem" onError="this.src='https://i.imgur.com/kZMNPpU.png'" alt="">
             <div class="infos">
                 <p class="title">{{ produto.nome }}</p>
                 <p class="desc">{{ produto.descricao }}</p>
-                <p class="desc">{{ produto.valor | currency: 'BRL' }}</p>
-                <button class="ver-mais">ver mais</button>
+                <!-- <p class="desc">{{ produto.valor | currency: 'BRL' }}</p> -->
+
+                <div class="button">
+                    <button [disabled]="true" class="ver-mais">Ver mais</button>
+                    <button (click)="addItemCart(produto.id)" class="ver-mais">Adicionar ao carrinho</button>
+                </div>
+                
             </div>
         </div>
     </div>
