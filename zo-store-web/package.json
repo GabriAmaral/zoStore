@@ -22,6 +22,7 @@
     "@angular/router": "~13.0.0",
     "@mdi/angular-material": "^2.6.95",
     "ng-sidebar": "^9.4.3",
+    "ngx-paypal": "^9.0.0",
     "ngx-toastr": "^12.0.0",
     "rxjs": "^7.5.7",
     "tslib": "^2.3.0",

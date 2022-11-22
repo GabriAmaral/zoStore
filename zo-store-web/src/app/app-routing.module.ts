@@ -15,6 +15,9 @@ import { ConsultarProdutosComponent } from './pages/produto/consultar-produtos/c
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { ConsultarClientesComponent } from './pages/cliente/consultar-clientes/consultar-clientes.component';
 import { HomeInfosComponent } from './pages/home-gerenciar/home-infos/home-infos.component';
+import { DetalhesCarrinhoComponent } from './pages/detalhes-carrinho/detalhes-carrinho.component';
+import { DetalheProdutoComponent } from './pages/detalhe-produto/detalhe-produto.component';
+import { ProdutosUsuarioComponent } from './pages/produtos-usuario/produtos-usuario.component';
 
 const routes: Routes = [
   {
@@ -35,8 +38,21 @@ const routes: Routes = [
     component: ProdutosComponent
   },
   {
+    path: 'produto/:id',
+    component: DetalheProdutoComponent,
+  },
+  {
     path: 'perfil',
     component: PerfilUsuarioComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'detalhes-carrinho',
+    component: DetalhesCarrinhoComponent,
+  },
+  {
+    path: 'meus-produtos',
+    component: ProdutosUsuarioComponent,
     canActivate: [ AuthGuard ]
   },
   {
@@ -87,6 +103,9 @@ export class AppRoutingModule {
     ConsultarProdutosComponent,
     AlterarProdutoComponent,
     ConsultarClientesComponent,
-    HomeInfosComponent
+    HomeInfosComponent,
+    DetalhesCarrinhoComponent,
+    DetalheProdutoComponent,
+    ProdutosUsuarioComponent
   ]
 }

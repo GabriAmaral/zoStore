@@ -20,6 +20,10 @@
           </div>
 
           <div class="input-info">
+            <input autocomplete="off" placeholder="cdn" type="text" formControlName="cdn" [ngClass]="{error: model.controls?.cdn?.errors?.required }">
+          </div>
+
+          <div class="input-info">
             <input accept="image/png, image/jpeg" type="file" (change)="handleFileInput($event)" formControlName="imagem">
           </div>
 

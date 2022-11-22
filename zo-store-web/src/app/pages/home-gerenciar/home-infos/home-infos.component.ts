@@ -31,6 +31,10 @@ export class HomeInfosComponent implements OnInit {
       this.infos.qtdProdutos = res?.length;
     })
 
+    this.baseApi.get(environment.baseApi + "api/Produto/BuscarVendar").subscribe((res: any) => {
+      this.infos.qtdVendas = res?.length;
+    })
+
     this.baseApi.get(environment.baseApi + "api/Usuario/GetClientes").subscribe((res: any) => {
       this.infos.qtdClientes = res?.length;
     })

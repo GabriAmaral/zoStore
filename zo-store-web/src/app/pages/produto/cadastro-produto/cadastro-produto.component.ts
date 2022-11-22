@@ -27,6 +27,7 @@ export class CadastroProdutoComponent implements OnInit {
       descricao: ['', Validators.required],
       valor: ['', Validators.required],
       imagem: [''],
+      cdn: ['', Validators.required],
     });
   }
 

@@ -19,8 +19,8 @@ export class MenuComponent implements OnInit {
   isScrollTop: any = true;
 
   usuarioMenu: any = null;
+  
   cart: any = [];
-
   itensCart: any = []
   valorTotalCart = 0
 

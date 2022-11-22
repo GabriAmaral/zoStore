@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CartService } from './core/cartService/cart.service';
 import { SidebarModule } from 'ng-sidebar';
+import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
   declarations: [
     AppRoutingModule.componentsDeclarations,
@@ -37,7 +38,8 @@ import { SidebarModule } from 'ng-sidebar';
     MatExpansionModule,
     MatTableModule,
     MatFormFieldModule,
-    SidebarModule
+    SidebarModule,
+    NgxPayPalModule
   ],
   providers: [
     BaseApiService,

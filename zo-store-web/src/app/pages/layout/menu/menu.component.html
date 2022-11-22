@@ -34,6 +34,11 @@
                 <span>Meu perfil</span>
             </button>
 
+            <button [routerLink]="['/meus-produtos']" mat-menu-item>
+                <mat-icon>token</mat-icon>
+                <span>Meus produtos</span>
+            </button>
+
             <button *ngIf="usuarioMenu?.access == 1" [routerLink]="['/gerenciar']" mat-menu-item>
                 <mat-icon>settings</mat-icon>
                 <span>Gerenciar sistema</span>
@@ -76,7 +81,7 @@
                 </div>
 
                 <div class="btns">
-                    <button>Finalizar compra</button>
+                    <button [routerLink]="['/detalhes-carrinho']">Finalizar compra</button>
                 </div>
             </div>
         </div>

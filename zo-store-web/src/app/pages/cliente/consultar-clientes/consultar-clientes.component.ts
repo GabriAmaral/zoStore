@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
   ]
 })
 export class ConsultarClientesComponent implements OnInit {
-  displayedColumns: string[] = [ 'id', 'name', 'email', 'actions' ];
+  displayedColumns: string[] = [ 'id', 'name', 'email' ];
   clientes = [
     // {id: 1, nome: 'Hydrogen', valor: 1.0079, descricao: 'H'},
     // {id: 2,  nome: 'Helium',  valor: 4.0026, descricao: 'He'},

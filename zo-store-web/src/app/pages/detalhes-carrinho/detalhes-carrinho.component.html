@@ -1,0 +1,34 @@
+<section class="page login form-default">
+  <div class="background">
+      <img class="lines" src="../../../assets/imgs/bg-lines-zo.png" alt="">
+      <div class="ellipse ellipse-top"></div>
+      <div class="ellipse ellipse-bottom"></div>
+  </div>
+
+  <div class="content">
+    <button [routerLink]="['/']" class="return-button"><img src="../../../assets/imgs/voltar.png" alt=""></button>
+
+    <div class="content-background">
+      <div *ngIf="!waitingForPayment" class="itens">
+        <p class="not-item" *ngIf="itensCart.length == 0">nenhum item em seu carrinho</p>
+        
+        <div *ngFor="let item of itensCart" class="item">
+          <img [src]="item.imagem" alt="">
+  
+          <div class="details">
+              <p class="name">{{ item.nome }}</p>
+              <p class="value">Valor: <span>{{ item.valor | currency: 'BRL' }}</span></p>
+              <!-- <button (click)="cartService.removerItemCart(item.id)"><mat-icon>delete</mat-icon> Remover </button> -->
+          </div>
+        </div>
+      </div>
+
+      <ngx-paypal *ngIf="waitingForPayment" [config]="payPalConfig"></ngx-paypal>
+
+      <div class="infos-finalizar">
+        <p>Total produtos: <span>{{ valorTotalCart | currency: 'BRL' }}</span></p>
+        <button (click)="waitingForPayment = !waitingForPayment; configPaypalItens();">{{ !waitingForPayment ? 'Finalizar compra' : 'Cancelar compra'  }}</button>
+      </div>
+    </div>
+  </div>
+</section>

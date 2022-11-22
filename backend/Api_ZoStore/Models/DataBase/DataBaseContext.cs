@@ -13,6 +13,9 @@ namespace Api_ZoStore.Models.DataBase
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<ClienteProduto>()
+              .HasKey(m => new { m.IdCliente, m.IdProduto });
         }
 
         public DbSet<Usuario> Usuario { get; set; }
@@ -21,6 +24,7 @@ namespace Api_ZoStore.Models.DataBase
         public DbSet<ItensPedido> ItensPedido { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
         public DbSet<OrdemPagamento> OrdemPgto { get; set; }
+        public DbSet<ClienteProduto> ClienteProduto { get; set; }
 
     }
 }

@@ -2,6 +2,7 @@
 using Api_ZoStore.Models.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,29 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api_ZoStore.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221122195301_newTableClienteProduto")]
+    partial class newTableClienteProduto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("Api_ZoStore.Models.Entities.ClienteProduto", b =>
-                {
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int")
-                        .HasColumnOrder(0);
-
-                    b.Property<int>("IdProduto")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
-                    b.HasKey("IdCliente", "IdProduto");
-
-                    b.ToTable("ClienteProduto");
-                });
 
             modelBuilder.Entity("Api_ZoStore.Models.Entities.ItensPedido", b =>
                 {
@@ -89,10 +76,6 @@ namespace Api_ZoStore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    b.Property<string>("Cdn")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Descricao")
                         .IsRequired()

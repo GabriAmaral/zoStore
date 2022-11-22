@@ -10,5 +10,7 @@ namespace Api_ZoStore.Models.Entities
         public string Descricao { get; set; }
         public float Valor { get; set; }
         public string Imagem { get; set; }
+
+        public string Cdn { get; set; }
     }
 }

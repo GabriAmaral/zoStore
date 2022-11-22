@@ -30,8 +30,6 @@ export class AlterarProdutoComponent implements OnInit {
         this.populateModel(res)
       })
     });
-
-    
   }
 
   populateModel(produto: any) {
@@ -41,6 +39,7 @@ export class AlterarProdutoComponent implements OnInit {
       descricao: [produto?.descricao, Validators.required],
       valor: [produto?.valor, Validators.required],
       imagem: [produto?.imagem],
+      cdn: [produto?.cdn, Validators.required],
     });
   }
 

@@ -11,14 +11,42 @@ namespace Api_ZoStore.Controllers
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IProdutoRepository _produtoRepository;
+        private readonly IClienteProdutoRepository _clienteProdutoRepository;
 
         public ProdutoController(
             IProdutoRepository produtoRepository,
-            IUsuarioRepository usuarioRepository
+            IUsuarioRepository usuarioRepository,
+            IClienteProdutoRepository clienteProdutoRepository
         )
         {
             this._produtoRepository = produtoRepository;
             this._usuarioRepository = usuarioRepository;
+            this._clienteProdutoRepository = clienteProdutoRepository;
+        }
+
+        [HttpPost]
+        public IActionResult LiberarProdutoCliente([FromBody] ClienteProduto clienteProduto)
+        {
+            _clienteProdutoRepository.Create(clienteProduto);
+
+            return Ok(true);
+        }
+
+        [HttpGet]
+        public IActionResult BuscarProdutosCliente(int idCliente)
+        {
+            var produtosCliente = _clienteProdutoRepository.GetAll().Where(x => x.IdCliente == idCliente).Select(x => x.IdProduto);
+            var produtos = _produtoRepository.GetAll().Where(x => produtosCliente.Contains(x.Id));
+
+            return Ok(produtos);
+        }
+
+        [HttpGet]
+        public IActionResult BuscarVendar()
+        {
+            var produtosCliente = _clienteProdutoRepository.GetAll();
+
+            return Ok(produtosCliente);
         }
 
         [HttpGet]
