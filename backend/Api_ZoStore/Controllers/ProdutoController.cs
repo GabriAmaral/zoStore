@@ -35,10 +35,21 @@ namespace Api_ZoStore.Controllers
         [HttpGet]
         public IActionResult BuscarProdutosCliente(int idCliente)
         {
-            var produtosCliente = _clienteProdutoRepository.GetAll().Where(x => x.IdCliente == idCliente).Select(x => x.IdProduto);
-            var produtos = _produtoRepository.GetAll().Where(x => produtosCliente.Contains(x.Id));
+            try
+            {
+                var produtosCliente = _clienteProdutoRepository.GetAll().Where(x => x.IdCliente == idCliente).Select(x => x.IdProduto);
+                var produtos = _produtoRepository.GetAll().Where(x => produtosCliente.Contains(x.Id));
 
-            return Ok(produtos);
+                if (produtos.ToList().Count == 0)
+                    return Ok("Cliente não possui produtos");
+
+                return Ok(produtos);
+            }
+            catch
+            {
+                return BadRequest("erro ao buscar produtos do cliente");
+            }
+
         }
 
         [HttpGet]
@@ -52,32 +63,68 @@ namespace Api_ZoStore.Controllers
         [HttpGet]
         public IActionResult BuscarProduto(int id)
         {
-            var produto = _produtoRepository.Get(id);
+            try
+            {
+                var produto = _produtoRepository.Get(id);
 
-            return Ok(produto);
+                return Ok(produto);
+            }
+            catch
+            {
+                return BadRequest($"Não foi possivel buscar produto: {id}");
+            }
+
         }
 
         [HttpPost]
         public IActionResult CriarProduto([FromBody] Produto produto)
         {
-            _produtoRepository.Create(produto);
-               
-            return Ok(true);
+            try
+            {
+                _produtoRepository.Create(produto);
+
+                return Ok(true);
+            }
+            catch
+            {
+                return BadRequest("Erro ao criar produto");
+            }
+
         }
 
         [HttpPost]
         public IActionResult Update([FromBody] Produto produto)
         {
-            _produtoRepository.Update(produto);
+            try
+            {
+                _produtoRepository.Update(produto);
 
-            return Ok(true);
+                return Ok(true);
+            }
+            catch
+            {
+                return BadRequest($"Não foi possivel atualizer produto {produto}");
+            }
+
         }
 
         [HttpGet]
         public IActionResult BuscarProdutos()
         {
-            var produtos = _produtoRepository.GetAll();
-            return Ok(produtos);
+            try
+            {
+                var produtos = _produtoRepository.GetAll();
+
+                if (produtos == null)
+                    return Ok("Não há produtos cadastros");
+
+                return Ok(produtos);
+            }
+            catch
+            {
+                return BadRequest("Erro ao buscar todos produtos");
+            }
+
         }
 
         [HttpDelete()]
