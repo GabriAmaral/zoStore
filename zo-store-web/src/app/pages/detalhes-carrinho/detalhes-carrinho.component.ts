@@ -116,7 +116,7 @@ export class DetalhesCarrinhoComponent implements OnInit {
             this.itensPaypal.push({
               name: produto.nome,
               quantity: '1',
-              category: 'Produto Digital',
+              category: 'DIGITAL_GOODS',
               unit_amount: {
                 currency_code: 'BRL',
                 value: produto.valor.toString(),
@@ -132,33 +132,20 @@ export class DetalhesCarrinhoComponent implements OnInit {
   }
 
   configPaypalItens() {
-    this.authService.buscarUsuario().then(user => {
-      if(user) {
-        console.log(user)
-
-        this.cart.forEach((idProduto: any) => {
-          this.baseApi.post(environment.baseApi + "api/Produto/LiberarProdutoCliente", { IdCliente: user.id, IdProduto: idProduto }).subscribe((res: any) => {
-            if(res) {
-              this.router.navigate(["/meus-produtos"])
-
-              this.toastr.success("Produtos liberados com sucesso", "");
-            } else {
-              this.toastr.error("Ocorreu um erro ao tentar a liberação do produto", "");
-            }
-          })
-        });
-      }
-    })
-
-    // this.initConfig();
+    this.initConfig();
   }
  
   private initConfig(): void {
+    console.log(this.itensPaypal, this.valorTotalCart)
+
     this.payPalConfig = {
       currency: 'BRL',
       clientId: 'AYLwkUFCoo3czWuuT_deFuSCMCOK1xk5mGaZWChYncNFzgvZRMv3RrRBi4BZRXtCJY77yjAVttcXCM3f',
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
+        application_context: {
+          brand_name: "ZO Store"
+        },
         purchase_units: [
           {
             amount: {
@@ -171,7 +158,11 @@ export class DetalhesCarrinhoComponent implements OnInit {
                 }
               }
             },
-
+            shipping: {
+              name: {
+                full_name: "ZO Store",
+              }
+            },
             items: this.itensPaypal
           }
         ]
@@ -184,16 +175,34 @@ export class DetalhesCarrinhoComponent implements OnInit {
         layout: 'vertical'
       },
       onApprove: (data, actions) => {
-        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        // console.log('onApprove - transaction was approved, but not authorized', data, actions);
 
         actions.order.get().then((details: any) => {
           console.log('onApprove - you can get full order details inside onApprove: ', details);
         });
       },
       onClientAuthorization: (data) => {
-        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-        this.toastr.success("Pagamento efetuado com sucesso", "");
+        // console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        // this.toastr.success("Pagamento efetuado com sucesso", "");
         // this.showSuccess = true;
+        
+        this.authService.buscarUsuario().then(user => {
+          if(user) {
+            this.cartService.limparCart()
+    
+            this.cart.forEach((idProduto: any) => {
+              this.baseApi.post(environment.baseApi + "api/Produto/LiberarProdutoCliente", { IdCliente: user.id, IdProduto: idProduto }).subscribe((res: any) => {
+                if(res) {
+                  this.router.navigate(["/meus-produtos"])
+    
+                  this.toastr.success("Produtos liberados com sucesso", "");
+                } else {
+                  this.toastr.error("Ocorreu um erro ao tentar a liberação do produto", "");
+                }
+              })
+            });
+          }
+        })
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
