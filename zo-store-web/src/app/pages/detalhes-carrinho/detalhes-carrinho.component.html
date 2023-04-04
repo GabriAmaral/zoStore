@@ -10,7 +10,7 @@
 
     <div class="content-background">
       <div *ngIf="!waitingForPayment" class="itens">
-        <p class="not-item" *ngIf="itensCart.length == 0">nenhum item em seu carrinho</p>
+        <p class="not-item" *ngIf="itensCart.length == 0">NENHUM ITEM EM SEU CARRINHO</p>
         
         <div *ngFor="let item of itensCart" class="item">
           <img [src]="item.imagem" alt="">

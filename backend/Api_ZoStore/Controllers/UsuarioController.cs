@@ -19,6 +19,10 @@ namespace Api_ZoStore.Controllers
         public IActionResult Get(int user)
         {
             var user_db = repos.Get(user);
+
+            if (user_db == null)
+                return BadRequest("Usuario não encontrado");
+
             return Ok(user_db);
         }
 
@@ -47,6 +51,10 @@ namespace Api_ZoStore.Controllers
         public IActionResult GetAll()
         {
             var users = repos.GetAll();
+
+            if(users.ToList().Count == 0)
+                return BadRequest("Erro ao buscar usuarios");
+
             return Ok(users);
         }
 
@@ -54,6 +62,10 @@ namespace Api_ZoStore.Controllers
         public IActionResult GetClientes()
         {
             var users = repos.GetAll().Where(x => x.Access == 0).ToList();
+
+            if (users.Count == 0)
+                return BadRequest("Não possiu clientes cadastrados");
+
             return Ok(users);
         }
 
@@ -61,6 +73,10 @@ namespace Api_ZoStore.Controllers
         public IActionResult GetFuncionarios()
         {
             var users = repos.GetAll().Where(x => x.Access != 0).FirstOrDefault();
+
+            if (users == null)
+                return BadRequest("Colaborador não cadastrado");
+
             return Ok(users);
         }
 
