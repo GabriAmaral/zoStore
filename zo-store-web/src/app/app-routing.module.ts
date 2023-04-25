@@ -18,6 +18,7 @@ import { HomeInfosComponent } from './pages/home-gerenciar/home-infos/home-infos
 import { DetalhesCarrinhoComponent } from './pages/detalhes-carrinho/detalhes-carrinho.component';
 import { DetalheProdutoComponent } from './pages/detalhe-produto/detalhe-produto.component';
 import { ProdutosUsuarioComponent } from './pages/produtos-usuario/produtos-usuario.component';
+import { TicketComponent } from './pages/ticket/ticket';
 
 const routes: Routes = [
   {
@@ -53,6 +54,11 @@ const routes: Routes = [
   {
     path: 'meus-produtos',
     component: ProdutosUsuarioComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'ticket',
+    component: TicketComponent,
     canActivate: [ AuthGuard ]
   },
   {
@@ -106,6 +112,7 @@ export class AppRoutingModule {
     HomeInfosComponent,
     DetalhesCarrinhoComponent,
     DetalheProdutoComponent,
-    ProdutosUsuarioComponent
+    ProdutosUsuarioComponent,
+    TicketComponent
   ]
 }

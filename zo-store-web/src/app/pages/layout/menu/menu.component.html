@@ -39,6 +39,11 @@
                 <span>Meus produtos</span>
             </button>
 
+            <button [routerLink]="['/ticket']" mat-menu-item>
+                <mat-icon>contact_support</mat-icon>
+                <span>Ticket / Suporte</span>
+            </button>
+
             <button *ngIf="usuarioMenu?.access == 1" [routerLink]="['/gerenciar']" mat-menu-item>
                 <mat-icon>settings</mat-icon>
                 <span>Gerenciar sistema</span>

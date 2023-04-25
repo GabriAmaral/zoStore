@@ -1,0 +1,45 @@
+<section class="page login form-default">
+  <div class="background">
+      <img class="lines" src="../../../assets/imgs/bg-lines-zo.png" alt="">
+      <div class="ellipse ellipse-top"></div>
+      <div class="ellipse ellipse-bottom"></div>
+  </div>
+
+  <div class="content">
+    <button [routerLink]="['/']" class="return-button"><img src="../../../assets/imgs/voltar.png" alt=""></button>
+
+    <div class="content-background">
+
+      <div class="title">
+        <h1>Enviar uma solicitação</h1>
+        <p>Não importa se é um probleminha técnico ou um surto, estamos aqui para ajudar!
+          Envie um ticket! Vamos responderemos em breve.</p>
+      </div>
+      
+      <div class="div-form">
+
+          <form>
+            <h4>Produto:</h4>
+              <select class="select-produto" name="produto">
+                <option value="" selected></option>
+                <option *ngFor="let produto of produtos" [value]="produto.nome">
+                  {{produto.nome}}
+                </option>
+              </select>
+          </form>
+          
+          <div class="mensagem">
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" class="textarea-messagem" rows="5"></textarea><br> 
+          </div>
+
+
+        <div class="button">
+          <button class="enviar">Enviar</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
