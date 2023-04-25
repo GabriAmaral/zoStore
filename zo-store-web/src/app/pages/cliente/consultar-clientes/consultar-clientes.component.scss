@@ -1,4 +1,4 @@
-.consulta-produtos.content {
+.consulta-clientes.content {
     flex-direction: column;
     padding: 2rem 5rem;
     width: 70vw;
@@ -73,4 +73,25 @@
             background: #ffe1e1;
         }
     }
+
+    .ver-produtos {
+        width: fit-content;
+        padding: .5rem 1rem;
+        font-size: 1.2rem !important;
+
+        border: 0;
+        border-radius: 0.5rem;
+        color: #fff !important;
+        background: rgba(111, 0, 255, 0.8);
+        border: 1px solid #422064;
+        box-shadow: 0px 0px 23px rgba(234, 169, 45, 0.2);
+        font-weight: 600;
+        transition: all 0.25s;
+
+        &:hover {
+            background: rgba(86, 0, 197, 0.8);
+            cursor: pointer;
+        }
+    }
 }
+

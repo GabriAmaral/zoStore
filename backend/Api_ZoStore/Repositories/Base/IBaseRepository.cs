@@ -10,6 +10,8 @@
 
         public bool Delete(TKey key);
 
+        public bool DeleteComposite(T value);
+
         public List<T> GetAll();
 
     }

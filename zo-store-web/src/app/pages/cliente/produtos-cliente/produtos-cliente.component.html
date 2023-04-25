@@ -1,0 +1,18 @@
+<mat-list>
+  <div mat-header>Produtos Cliente</div>
+  <mat-divider></mat-divider>
+  <div *ngIf="produtos.length <= 0" mat-subheader>Nenhum produto encontrado</div>
+  
+
+  <div class="produtos">
+    <div class="prod" *ngFor="let item of produtos">
+      <img [src]="item.imagem" alt="">
+
+      <div class="infos">
+        <p mat-subheader>{{ item.nome }}</p>
+        <button (click)="removerProduto(item)">Remover</button>
+      </div>
+    </div>
+    
+  </div>
+</mat-list>

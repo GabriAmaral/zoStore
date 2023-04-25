@@ -35,15 +35,15 @@
     border-bottom: 0.15rem solid #fff;
 }
 
-.content {
+.content-prods {
     width: 100%;
     height: fit-content !important;
     display: grid;
-    grid-template-rows: 10rem 1fr;
+    grid-template-rows: 30rem 1fr;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-content: center;
-    padding: 10rem 5rem;
+    padding: 15rem 5rem;
 
     .produto {
         width: 100%;

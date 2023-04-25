@@ -5,7 +5,7 @@ using Api_ZoStore.Repositories.Interface;
 
 namespace Api_ZoStore.Repositories.Implantation
 {
-    public class ClienteProdutoRepository : BaseRepository<ClienteProduto, int>, IClienteProdutoRepository
+    public class ClienteProdutoRepository : BaseRepository<ClienteProduto, ClienteProduto>, IClienteProdutoRepository
     {
         public ClienteProdutoRepository(DataBaseContext _db) : base(_db)
         {

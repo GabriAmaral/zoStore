@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { BaseApiService } from 'src/app/core/baseApi/base-api.service';
 import { environment } from 'src/environments/environment';
+import { ProdutosClienteComponent } from '../produtos-cliente/produtos-cliente.component';
 
 @Component({
   selector: 'app-consultar-clientes',
@@ -12,7 +14,7 @@ import { environment } from 'src/environments/environment';
   ]
 })
 export class ConsultarClientesComponent implements OnInit {
-  displayedColumns: string[] = [ 'id', 'name', 'email' ];
+  displayedColumns: string[] = [ 'id', 'name', 'email', 'produtos' ];
   clientes = [
     // {id: 1, nome: 'Hydrogen', valor: 1.0079, descricao: 'H'},
     // {id: 2,  nome: 'Helium',  valor: 4.0026, descricao: 'He'},
@@ -39,6 +41,7 @@ export class ConsultarClientesComponent implements OnInit {
   dataSource = new MatTableDataSource(this.clientes);
 
   constructor(
+    private dialog: MatDialog,
     private baseApi: BaseApiService
   ) {
     this.recomporClientes()
@@ -65,8 +68,17 @@ export class ConsultarClientesComponent implements OnInit {
     })
   }
 
-  editarProduto(produto: any) {
-    console.log(produto)
+  visualizarProdutosCliente(idCliente: any) {
+    this.baseApi.get(environment.baseApi + "api/Produto/BuscarProdutosCliente?idCliente=" + idCliente).subscribe((res: any) => {
+      const dialogRef = this.dialog.open(ProdutosClienteComponent, {
+        width: "60rem",
+        height: "45rem",
+        data: {
+          produtos: res,
+          cliente: idCliente
+        },
+        panelClass: "custom-dialog-container",
+      });
+    })
   }
-
 }

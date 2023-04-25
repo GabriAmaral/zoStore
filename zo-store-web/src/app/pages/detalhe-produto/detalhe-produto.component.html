@@ -17,7 +17,7 @@
                 <p class="title">{{ produto.nome }}</p>
                 <p class="desc">{{ produto.descricao }}</p>
 
-                <p class="valor">R$ {{ produto.valor | currency: 'BRL' }}</p>
+                <p class="valor">{{ produto.valor | currency: 'BRL' }}</p>
             </div>
 
             <div class="panel-actions">

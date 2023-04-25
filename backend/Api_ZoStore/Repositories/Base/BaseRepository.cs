@@ -56,6 +56,22 @@ namespace Api_ZoStore.Repositories.Base
             {
                 var keyDelete = GetTable().Find(key);
                 GetTable().Remove(keyDelete);
+
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteComposite(T value)
+        {
+            try
+            {
+                GetTable().Remove(value);
                 db.SaveChanges();
 
                 return true;

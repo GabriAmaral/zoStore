@@ -12,7 +12,7 @@
 
     <p class="title-page">Meus produtos</p>
 
-    <div class="content">
+    <div class="content-prods">
       <div *ngFor="let produto of produtos; let i = index" class="produto" [ngClass]="{ reverse: i % 2 == 1 }">
           <img [src]="produto.imagem" onError="this.src='https://i.imgur.com/kZMNPpU.png'" alt="">
           

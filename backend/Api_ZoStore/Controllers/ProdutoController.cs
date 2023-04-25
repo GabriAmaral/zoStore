@@ -136,5 +136,14 @@ namespace Api_ZoStore.Controllers
             return BadRequest();
         }
 
+        [HttpPost()]
+        public IActionResult DeletarProdutoCliente(ClienteProduto clienteProduto)
+        {
+            if (_clienteProdutoRepository.DeleteComposite(clienteProduto))
+                return Ok();
+
+            return BadRequest();
+        }
+
     }
 }

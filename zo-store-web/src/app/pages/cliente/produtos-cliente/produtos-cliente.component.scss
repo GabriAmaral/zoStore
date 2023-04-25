@@ -1,0 +1,35 @@
+.mat-mdc-list-item-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.prod {
+    img {
+        height: 7rem;
+    }
+
+    padding: 2rem;
+    display: flex;
+
+    .infos {
+        button {
+            margin-left: 2rem;
+            width: fit-content;
+            padding: .5rem 1rem;
+            font-size: 1.2rem !important;
+
+            border: 0;
+            border-radius: 0.5rem;
+            color: #fff !important;
+            background: rgba(111, 0, 255, 0.8);
+            border: 1px solid #422064;
+            box-shadow: 0px 0px 23px rgba(234, 169, 45, 0.2);
+            font-weight: 600;
+            transition: all 0.25s;
+
+            &:hover {
+                background: rgba(86, 0, 197, 0.8);
+                cursor: pointer;
+            }
+        }
+    }
+}

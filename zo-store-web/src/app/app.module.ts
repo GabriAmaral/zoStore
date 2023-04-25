@@ -15,6 +15,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 
+import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CartService } from './core/cartService/cart.service';
@@ -38,6 +40,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     MatExpansionModule,
     MatTableModule,
     MatFormFieldModule,
+    MatDialogModule,
+    MatListModule,
     SidebarModule,
     NgxPayPalModule
   ],

@@ -19,6 +19,7 @@ import { DetalhesCarrinhoComponent } from './pages/detalhes-carrinho/detalhes-ca
 import { DetalheProdutoComponent } from './pages/detalhe-produto/detalhe-produto.component';
 import { ProdutosUsuarioComponent } from './pages/produtos-usuario/produtos-usuario.component';
 import { TicketComponent } from './pages/ticket/ticket';
+import { ProdutosClienteComponent } from './pages/cliente/produtos-cliente/produtos-cliente.component';
 
 const routes: Routes = [
   {
@@ -113,6 +114,7 @@ export class AppRoutingModule {
     DetalhesCarrinhoComponent,
     DetalheProdutoComponent,
     ProdutosUsuarioComponent,
-    TicketComponent
+    TicketComponent,
+    ProdutosClienteComponent
   ]
 }
