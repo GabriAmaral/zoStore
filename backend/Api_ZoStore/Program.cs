@@ -21,6 +21,8 @@ builder.Services.AddDbContext<DataBaseContext>(x => x.UseMySql(
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IClienteProdutoRepository, ClienteProdutoRepository>();
+builder.Services.AddScoped<ITicketRepository, TicketRepository>();
+builder.Services.AddScoped<IChatTicketMessagesRepository, ChatTicketMessagesRepository>();
 
 var app = builder.Build();
 

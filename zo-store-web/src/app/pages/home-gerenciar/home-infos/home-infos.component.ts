@@ -38,5 +38,9 @@ export class HomeInfosComponent implements OnInit {
     this.baseApi.get(environment.baseApi + "api/Usuario/GetClientes").subscribe((res: any) => {
       this.infos.qtdClientes = res?.length;
     })
+
+    this.baseApi.get(environment.baseApi + "api/Ticket/BuscarTickets?status=3").subscribe((res: any) => {
+      this.infos.qtdTickets = res?.length;
+    })
   }
 }

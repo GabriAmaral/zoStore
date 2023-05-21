@@ -23,6 +23,7 @@ namespace Api_ZoStore.Models.DataBase
         public DbSet<Produto> Produto { get; set; }
         public DbSet<ItensPedido> ItensPedido { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<ChatTicketMessages> ChatTicketMessages { get; set; }
         public DbSet<OrdemPagamento> OrdemPgto { get; set; }
         public DbSet<ClienteProduto> ClienteProduto { get; set; }
 

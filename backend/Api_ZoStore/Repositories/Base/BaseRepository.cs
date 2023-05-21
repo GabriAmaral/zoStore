@@ -1,4 +1,5 @@
 ﻿using Api_ZoStore.Models.DataBase;
+using Api_ZoStore.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api_ZoStore.Repositories.Base
@@ -20,7 +21,17 @@ namespace Api_ZoStore.Repositories.Base
         public void Create(T entity)
         {
             GetTable().Add(entity);
+
             db.SaveChanges();
+        }
+
+        public T CreateReturnItemInsert(T entity)
+        {
+            GetTable().Add(entity);
+
+            db.SaveChanges();
+
+            return GetTable().OrderBy(x => (x as Ticket).Id).Last();
         }
 
         public bool Update(T entity)

@@ -9,37 +9,39 @@
     <button [routerLink]="['/']" class="return-button"><img src="../../../assets/imgs/voltar.png" alt=""></button>
 
     <div class="content-background">
-
       <div class="title">
         <h1>Enviar uma solicitação</h1>
         <p>Não importa se é um probleminha técnico ou um surto, estamos aqui para ajudar!</p>
         <p>Envie um ticket, responderemos assim que for possível</p>
       </div>
       
-      <div class="div-form">
-
-          <form>
+      <form [formGroup]="model" ngForm>
+        <div class="div-form">
             <h4>Produto:</h4>
-              <select class="select-produto" name="produto">
-                <option value="" selected></option>
-                <option *ngFor="let produto of produtos" [value]="produto.nome">
-                  {{produto.nome}}
-                </option>
-              </select>
-          </form>
-          
-          <div class="mensagem">
-            <label for="mensagem">Mensagem:</label>
-            <textarea id="mensagem" name="mensagem" class="textarea-messagem" rows="5"></textarea><br> 
+            <select #produto (change)="produtoSelect = produto.value" class="select-produto" name="produto">
+              <option value="" selected></option>
+              <option *ngFor="let produto of produtos" [value]="produto.id">
+                {{produto.nome}}
+              </option>
+            </select>
+
+            <br/>
+
+            <div class="mensagem">
+              <label for="mensagem">Assunto:</label>
+              <textarea id="mensagem" name="mensagem" class="textarea-messagem" rows="5" formControlName="assunto" [ngClass]="{ error: model.controls?.assunto?.errors?.required }"></textarea><br> 
+            </div>
+
+            <div class="mensagem">
+              <label for="mensagem">Detalhes do problema:</label>
+              <textarea id="mensagem" name="mensagem" class="textarea-messagem" rows="5" formControlName="mensagem" [ngClass]="{ error: model.controls?.mensagem?.errors?.required }"></textarea><br> 
+            </div>
+
+          <div class="button">
+            <button [disabled]="!model.valid" (click)="onSubmit()" type="submit" class="enviar">Enviar</button>
           </div>
-
-
-        <div class="button">
-          <button class="enviar">Enviar</button>
         </div>
-
-      </div>
-
+      </form>
     </div>
   </div>
 </section>

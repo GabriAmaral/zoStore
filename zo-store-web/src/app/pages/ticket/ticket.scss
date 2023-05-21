@@ -30,7 +30,7 @@
       }
 
       h1 {
-        margin-bottom: 20rem;
+        margin-bottom: 10rem;
       }
 
       p {
@@ -48,36 +48,30 @@
       color: #fff;
       width: 60rem;
 
-      form {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
+      h4 {
+        margin: 0;
+      }
 
-        h4 {
-          margin: 0;
-        }
-
-        .select-produto {
-          position: relative;
-          margin: 1rem;
-          min-width: 50.5rem;
-          min-height: 3rem;
-          border: 0.2rem solid #632575;
-          border-radius: 0.5rem;
-          background: white;
-          cursor: pointer;
-          font-family: "Roboto";
-          font-style: bold;
-          font-size: 1.6rem;
-          transition: all 0.25s;
-        }
+      .select-produto {
+        position: relative;
+        margin: 1rem;
+        min-width: 50.5rem;
+        min-height: 3rem;
+        border: 0.2rem solid #632575;
+        border-radius: 0.5rem;
+        background: white;
+        cursor: pointer;
+        font-family: "Roboto";
+        font-style: bold;
+        font-size: 1.6rem;
+        transition: all 0.25s;
       }
 
       .mensagem {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        // align-items: center;
+        flex-direction: column;
 
         .textarea-messagem {
           margin: 1rem;
@@ -89,13 +83,15 @@
       }
 
       .button {
+        margin-top: 2.5rem;
+
         display: flex;
         justify-content: center;
 
         button {
           width: fit-content;
-          padding: 1rem 2rem;
-          font-size: 1.2rem !important;
+          padding: 1.5rem 10rem;
+          font-size: 1.4rem !important;
 
           border: 0;
           border-radius: 0.5rem;
@@ -124,4 +120,10 @@
       }
     }
   }
+}
+
+.error {
+  box-shadow: 0px 0px 23px rgb(234 45 45 / 35%);
+  border: 0.1rem solid rgba(234, 45, 45, 0.9);
+  background: #ffe1e1;
 }

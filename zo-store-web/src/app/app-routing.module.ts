@@ -12,16 +12,19 @@ import { LoginComponent } from './pages/login/login.component';
 import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.component';
 import { AlterarProdutoComponent } from './pages/produto/alterar-produto/alterar-produto.component';
 import { ConsultarProdutosComponent } from './pages/produto/consultar-produtos/consultar-produtos.component';
-import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { ConsultarClientesComponent } from './pages/cliente/consultar-clientes/consultar-clientes.component';
 import { HomeInfosComponent } from './pages/home-gerenciar/home-infos/home-infos.component';
 import { DetalhesCarrinhoComponent } from './pages/detalhes-carrinho/detalhes-carrinho.component';
 import { DetalheProdutoComponent } from './pages/detalhe-produto/detalhe-produto.component';
 import { ProdutosUsuarioComponent } from './pages/produtos-usuario/produtos-usuario.component';
-import { TicketComponent } from './pages/ticket/ticket';
+import { TicketComponent } from './pages/ticket/ticket.component';
 import { ProdutosClienteComponent } from './pages/cliente/produtos-cliente/produtos-cliente.component';
+import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { TicketsListComponent } from './pages/ticket/tickets-list/tickets-list.component';
+import { SharedModule } from './shared/shared.module';
+import { TicketsListUserComponent } from './pages/ticket/tickets-list-user/tickets-list-user.component';
 
-const routes: Routes = [
+var routes = [
   {
     path: '',
     component: HomeComponent,
@@ -58,8 +61,13 @@ const routes: Routes = [
     canActivate: [ AuthGuard ]
   },
   {
-    path: 'ticket',
+    path: 'novo-ticket',
     component: TicketComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'meus-tickets',
+    component: TicketsListUserComponent,
     canActivate: [ AuthGuard ]
   },
   {
@@ -86,14 +94,21 @@ const routes: Routes = [
       {
         path: 'consultar-clientes',
         component: ConsultarClientesComponent
-      }
+      },
+      {
+        path: 'consultar-tickets/:status',
+        component: TicketsListComponent
+      },
     ]
   },
 ];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  exports: [ 
+    RouterModule,
+    SharedModule
+  ]
 })
 
 export class AppRoutingModule { 
@@ -115,6 +130,8 @@ export class AppRoutingModule {
     DetalheProdutoComponent,
     ProdutosUsuarioComponent,
     TicketComponent,
-    ProdutosClienteComponent
+    ProdutosClienteComponent,
+    TicketsListComponent,
+    TicketsListUserComponent
   ]
 }

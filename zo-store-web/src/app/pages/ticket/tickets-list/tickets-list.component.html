@@ -1,0 +1,36 @@
+<section id="tickets" class="tickets">
+    <div class="content">
+        <div *ngFor="let ticket of tickets; let i = index" class="ticket" [ngClass]="{ reverse: i % 2 == 1 }">
+            <div class="script">
+                <div class="info">
+                    <p class="sub-title">Produto</p>
+                    <p class="title">{{ ticket.produto.nome }}</p>
+                </div>
+
+                <img [src]="ticket.produto.imagem" onError="this.src='https://i.imgur.com/kZMNPpU.png'" alt="">
+            </div>
+
+            <div class="player">
+                <img [src]="ticket.usuario.foto" onError="this.src='https://i.imgur.com/kZMNPpU.png'" alt="">
+
+                <div class="info">
+                    <p class="sub-title">Cliente</p>
+                    <p class="title">{{ ticket.usuario.name }}</p>
+                </div>
+            </div>
+            
+            <div class="info">
+                <p class="sub-title">Assunto <span [ngClass]="{ close: ticket.status == 0 }">{{  ticket.status == 1 ? 'Aberto' : 'Fechado' }}</span></p>
+                <p class="title">{{ ticket.assunto }}</p>
+            </div>
+            
+            <p class="desc">{{ ticket.descricao }}</p>
+            <!-- <p class="desc">{{ produto.valor | currency: 'BRL' }}</p> -->
+
+            <div class="button">
+                <button class="ver-mais">{{  ticket.status == 1 ? 'ABRIR CHAT' : 'HISTÓRICO CHAT' }}</button>
+                <button (click)="mudarStatusTicket(ticket)" class="ver-mais">{{  ticket.status == 1 ? 'FECHAR' : 'REABRIR' }}</button>
+            </div>
+        </div>
+    </div>
+</section>

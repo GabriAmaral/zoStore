@@ -39,9 +39,9 @@
                 <span>Meus produtos</span>
             </button>
 
-            <button [routerLink]="['/ticket']" mat-menu-item>
+            <button [routerLink]="['/meus-tickets']" mat-menu-item>
                 <mat-icon>contact_support</mat-icon>
-                <span>Ticket / Suporte</span>
+                <span>Tickets / Suporte</span>
             </button>
 
             <button *ngIf="usuarioMenu?.access == 1" [routerLink]="['/gerenciar']" mat-menu-item>

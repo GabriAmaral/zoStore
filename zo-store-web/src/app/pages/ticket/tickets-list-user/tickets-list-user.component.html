@@ -1,0 +1,40 @@
+<section id="tickets" class="page form-default tickets">
+    <div class="background">
+        <img class="lines" src="../../../assets/imgs/bg-lines-zo.png" alt="">
+        <div class="ellipse ellipse-top"></div>
+        <div class="ellipse ellipse-bottom"></div>
+    </div>
+
+    <menu [onlyUserInfos]="true"></menu>
+
+    <div class="content">
+        <button [routerLink]="['/']" class="return-button"><img src="../../../assets/imgs/voltar.png" alt=""></button>
+
+        <button [routerLink]="['/novo-ticket']" class="novo-ticket">NOVO TICKET</button>
+
+        <div *ngFor="let ticket of tickets; let i = index" class="ticket" [ngClass]="{ reverse: i % 2 == 1 }">
+            <div class="script">
+                <div class="info">
+                    <p class="sub-title">Produto</p>
+                    <p class="title">{{ ticket.produto.nome }}</p>
+                </div>
+
+                <img [src]="ticket.produto.imagem" onError="this.src='https://i.imgur.com/kZMNPpU.png'" alt="">
+            </div>
+            
+            <div class="info">
+                <p style="margin-bottom: 0.5rem;" class="sub-title">Assunto <span [ngClass]="{ close: ticket.status == 0 }">{{  ticket.status == 1 ? 'Aberto' : 'Fechado' }}</span></p>
+                <p class="title">{{ ticket.assunto }}</p>
+            </div>
+
+            <div class="info">
+                <p class="sub-title">Data Abertura</p>
+                <p style="font-size: 1.5rem;" class="title">{{ ticket.dataAbertura | date: 'dd/MM/yyyy hh:MM'  }}</p>
+            </div>
+
+            <div class="button">
+                <button class="ver-mais">{{  ticket.status == 1 ? 'ABRIR CHAT' : 'HISTÓRICO CHAT' }}</button>
+            </div>
+        </div>
+    </div>
+</section>
