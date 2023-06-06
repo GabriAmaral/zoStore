@@ -28,7 +28,7 @@
             <!-- <p class="desc">{{ produto.valor | currency: 'BRL' }}</p> -->
 
             <div class="button">
-                <button class="ver-mais">{{  ticket.status == 1 ? 'ABRIR CHAT' : 'HISTÓRICO CHAT' }}</button>
+                <button (click)="openChatTicket(ticket.id)" class="ver-mais">{{  ticket.status == 1 ? 'ABRIR CHAT' : 'HISTÓRICO CHAT' }}</button>
                 <button (click)="mudarStatusTicket(ticket)" class="ver-mais">{{  ticket.status == 1 ? 'FECHAR' : 'REABRIR' }}</button>
             </div>
         </div>

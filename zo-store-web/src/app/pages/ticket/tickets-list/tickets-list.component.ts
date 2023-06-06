@@ -41,6 +41,10 @@ export class TicketsListComponent implements OnInit {
     })
   }
 
+  openChatTicket(id: any) {
+    this.router.navigateByUrl("/chat-ticket/" + id)
+  }
+
   mudarStatusTicket(ticket: any) {
     var newTicket = Object.assign({}, ticket)
 

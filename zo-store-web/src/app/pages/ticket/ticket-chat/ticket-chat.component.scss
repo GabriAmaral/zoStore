@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+#tickets {
+    min-height: 100vh;
+    height: fit-content;
+    position: relative;
+
+    .content {
+        width: 100%;
+        display: flex;
+        justify-items: center;
+        align-content: center;
+        padding: 10rem 15rem;
+
+        .informacoes-ticket {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-content: center;
+
+            width: 50rem;
+
+            .info {
+                margin: .35rem 0;
+                background: #ffffff07;
+                font-family: "Roboto";
+                font-style: inherit;
+                padding: 1rem 2rem;
+
+                .sub {
+                    font-size: 1.2rem;
+                    color: #a1a1a1;
+                    margin-bottom: -0.25rem;
+                }
+
+                .value {
+                    font-size: 1.4rem;
+                    color: #727272;
+                    font-weight: 500;
+                    margin: 0;
+                }
+            }
+
+            textarea {
+                margin-top: 1rem;
+                border: 0;
+                resize: none;
+                padding: 1rem;
+                background: #fff;
+                font-size: 1.7rem;
+
+                &.hide {
+                    display: none;
+                }
+            }
+
+            .btns {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: .75rem;
+
+                button {
+                    font-family: "Roboto";
+                    font-style: inherit;
+                    padding: 1.5rem 2rem;
+                    width: 48%;
+                    border: 0;
+                    border-radius: 0.5rem;
+                    color: #fff !important;
+                    background: rgba(111, 0, 255, 0.8);
+                    border: 1px solid #422064;
+                    font-weight: 600;
+                    transition: all .25s;
+
+                    &:nth-child(2) {
+                        background: #727272;
+                        border: 0;
+
+                        &:hover {
+                            background: #949494;
+                        }
+                    }
+
+                    &:hover {
+                        background: rgba(86, 0, 197, 0.8);
+                        cursor: pointer;
+                    }
+
+                    &.disabled {
+                        opacity: .3 !important;
+
+                        &:hover {
+                            background: rgba(111, 0, 255, 0.8);
+                            cursor: default;
+                        }
+                    }
+                }
+            }
+        }
+
+        .messages {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-content: center;
+            padding-left: 3rem;
+            width: 100%;
+
+            .message {
+                display: flex;
+                flex-direction: column;
+                justify-items: center;
+                align-content: center;
+
+                background: #ffffff07;
+                margin: 1rem 0;
+                border: 0.2rem solid #636363;
+                border-radius: 0.25rem;
+
+                &.my {
+                    background: rgb(111 0 255 / 6%);
+                    border: 0.2rem solid rgba(111, 0, 255, 0.3);
+                }
+
+                &:nth-child(1) {
+                    margin: .25rem;
+                }
+
+                .header {
+                    padding: 2rem 3rem;
+
+                    display: flex;
+                    justify-content: space-between;
+
+                    font-size: 1.4rem;
+                    color: #727272;
+                    font-weight: 500;
+                    margin: 0;
+
+                    .info {
+                        display: flex;
+                        justify-items: center;
+                        align-items: center;
+
+                        p {
+                            margin: 0;
+                            text-align: center;
+                            margin-left: 1.5rem;
+                            height: fit-content;
+                            color: #fff;
+                            font-size: 1.6rem;
+                            font-weight: 600;
+                        }
+
+                        img {
+                            width: 5rem;
+                            height: 5rem;
+                            object-fit: cover;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+
+                .text {
+                    padding: 1rem 3rem;
+                    color: #ffffffcb;
+                }
+            }
+        }
+
+        .ticket {
+            width: 33rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 3rem 0;
+            background: #ffffff17;
+            padding: 2rem 1.5rem;
+            align-items: center;
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                .sub-title {
+                    font-size: 1.2rem;
+                    font-family: "Roboto";
+                    font-style: inherit;
+                    color: #727272;
+                    margin-bottom: 0.5rem;
+
+                    span {
+                        margin: 0 0.5rem;
+                        background: green;
+                        color: #fff;
+                        padding: 0.5rem;
+                        border-radius: 0.25rem;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        font-size: 1rem;
+
+                        &.close {
+                            background: rgb(155, 13, 13);
+                        }
+                    }
+                }
+
+                .title {
+                    font-size: 2rem;
+                    font-family: 'Roboto';
+                    font-style: bold;
+                    color: #fff;
+                }
+            }
+
+            .script {
+                h1 {
+                    font-size: 1.5rem;
+                    font-family: 'Roboto';
+                    font-style: bold;
+                    color: #fff;
+                    margin: 0;
+                }
+
+                img {
+                    height: 17rem;
+                    border: 0.2rem solid #eaa92d;
+                }
+
+                .title {
+                    margin: 0;
+                    font-size: 1.6rem;
+                    margin-bottom: .5rem;
+                }
+            }
+
+            .player {
+                display: flex;
+                width: 100%;
+                margin: 1.5rem 0;
+                align-items: center;
+
+                h1 {
+                    font-size: 1.5rem;
+                    font-family: 'Roboto';
+                    font-style: bold;
+                    color: #b9b9b9;
+                    margin: 0 .5rem;
+                    display: flex;
+                    width: 100%;
+                    justify-content: flex-end;
+                }
+
+                img {
+                    border-radius: 50%;
+                    height: 5rem;
+                    width: 5rem;
+                    border: 0.2rem solid #eaa92d;
+                }
+
+                .title {
+                    margin: 0;
+                    font-size: 1.6rem;
+                    justify-content: end;
+                    display: flex;
+                }
+
+                .sub-title {
+                    justify-content: end;
+                    display: flex;
+                }
+            }
+
+            button {
+                width: fit-content;
+                padding: 1rem 2rem;
+                font-size: 1.2rem !important;
+
+                border: 0;
+                border-radius: 0.5rem;
+                color: #fff !important;
+                background: rgba(111, 0, 255, 0.8);
+                border: 1px solid #422064;
+                box-shadow: 0px 0px 23px rgba(234, 169, 45, 0.2);
+                font-weight: 600;
+                transition: all .25s;
+
+                margin: 0 0.5rem;
+
+                &:hover {
+                    background: rgba(86, 0, 197, 0.8);
+                    cursor: pointer;
+                }
+
+                &:disabled {
+                    opacity: .3;
+
+                    &:hover {
+                        background: rgba(111, 0, 255, 0.8);
+                    }
+                }
+            }
+        }
+    }
+}

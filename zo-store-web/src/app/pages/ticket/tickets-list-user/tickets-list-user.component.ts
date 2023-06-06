@@ -33,4 +33,8 @@ export class TicketsListUserComponent implements OnInit {
       })
     })
   }
+
+  openChatTicket(id: any) {
+    this.router.navigateByUrl("/chat-ticket/" + id)
+  }
 }

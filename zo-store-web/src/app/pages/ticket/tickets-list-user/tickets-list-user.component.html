@@ -33,7 +33,7 @@
             </div>
 
             <div class="button">
-                <button class="ver-mais">{{  ticket.status == 1 ? 'ABRIR CHAT' : 'HISTÓRICO CHAT' }}</button>
+                <button (click)="openChatTicket(ticket.id)" class="ver-mais">{{  ticket.status == 1 ? 'ABRIR CHAT' : 'HISTÓRICO CHAT' }}</button>
             </div>
         </div>
     </div>

@@ -56,7 +56,7 @@ namespace Api_ZoStore.Controllers
         {
             _chatTicketMessagesRepository.Create(message);
 
-            return Ok(true);
+            return Ok(BuscarHistoricoTicket(message.IdTicket));
         }
 
         [HttpGet]
@@ -64,16 +64,42 @@ namespace Api_ZoStore.Controllers
         {
             try
             {
-                var historico = _chatTicketMessagesRepository.GetAll().Where(x => x.IdTicket == idTicket);
+                var historico = _chatTicketMessagesRepository.GetAll().Where(x => x.IdTicket == idTicket).OrderByDescending(x => x.Id);
 
                 if (historico.ToList().Count == 0)
                     return Ok("Esse ticket não possui histórico");
+
+                foreach (var ticketItem in historico)
+                {
+                    ticketItem.Usuario = _usuarioRepository.Get(ticketItem.IdRemetente);
+                }
 
                 return Ok(historico);
             }
             catch
             {
                 return BadRequest("erro ao buscar histórico do ticket");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult BuscarInfosTicket(int idTicket)
+        {
+            try
+            {
+                var ticket = _ticketRepository.GetAll().Where(x => x.Id == idTicket).FirstOrDefault();
+
+                if (ticket == null)
+                    return Ok("Esse ticket não existe");
+
+                ticket.Produto = _produtoRepository.Get(ticket.IdProduto);
+                ticket.Usuario = _usuarioRepository.Get(ticket.IdCliente);
+
+                return Ok(ticket);
+            }
+            catch
+            {
+                return BadRequest("erro ao buscar ticket");
             }
         }
 

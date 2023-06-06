@@ -1,0 +1,47 @@
+<section id="tickets" class="page form-default tickets">
+    <div class="background">
+        <img class="lines" src="../../../assets/imgs/bg-lines-zo.png" alt="">
+        <div class="ellipse ellipse-top"></div>
+        <div class="ellipse ellipse-bottom"></div>
+    </div>
+
+    <menu [onlyUserInfos]="true"></menu>
+
+    <div class="content">
+        <div class="informacoes-ticket">
+            <div class="info">
+                <p class="sub">Solicitante</p>
+                <p class="value">{{ infoTicket?.usuario.name }}</p>
+            </div>
+
+            <div class="info">
+                <p class="sub">Abertura</p>
+                <p class="value">{{ infoTicket?.dataAbertura | date: 'dd/MM/yyyy hh:MM' }}</p>
+            </div>
+
+            <div class="info">
+                <p class="sub">Script</p>
+                <p class="value">{{ infoTicket?.produto.nome }}</p>
+            </div>
+
+            <textarea #message id="story" rows="5" cols="33"></textarea>
+
+            <div class="btns">
+                <button *ngIf="infoTicket?.status == 1" (click)="enviarNovaMensagem(message.value); message.value = ''">Responder</button>
+            </div>
+        </div>
+
+        <div class="messages">
+            <div class="message" *ngFor="let item of messages" [ngClass]="{ my: item.idRemetente == user }">
+                <div class="header">
+                    <div class="info">
+                        <img [src]="item?.usuario.foto">
+                        <p>{{ item?.usuario.name }}</p>
+                    </div>
+                </div>
+
+                <p class="text">{{ item?.mensagem }}</p>
+            </div>
+        </div>
+    </div>
+</section>

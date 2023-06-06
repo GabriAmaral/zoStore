@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Api_ZoStore.Models.Entities
 {
@@ -9,5 +10,8 @@ namespace Api_ZoStore.Models.Entities
         public int IdTicket { get; set; }
         public int IdRemetente { get; set; }
         public string Mensagem { get; set; }
+
+        [NotMapped]
+        public Usuario? Usuario { get; set; }
     }
 }

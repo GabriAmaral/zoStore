@@ -23,6 +23,7 @@ import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { TicketsListComponent } from './pages/ticket/tickets-list/tickets-list.component';
 import { SharedModule } from './shared/shared.module';
 import { TicketsListUserComponent } from './pages/ticket/tickets-list-user/tickets-list-user.component';
+import { TicketChatComponent } from './pages/ticket/ticket-chat/ticket-chat.component';
 
 var routes = [
   {
@@ -68,6 +69,11 @@ var routes = [
   {
     path: 'meus-tickets',
     component: TicketsListUserComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'chat-ticket/:id',
+    component: TicketChatComponent,
     canActivate: [ AuthGuard ]
   },
   {
@@ -132,6 +138,7 @@ export class AppRoutingModule {
     TicketComponent,
     ProdutosClienteComponent,
     TicketsListComponent,
-    TicketsListUserComponent
+    TicketsListUserComponent,
+    TicketChatComponent
   ]
 }
